@@ -7,23 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A0F3E9D28F949090094141E /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0F3E9C28F949090094141E /* OrderViewController.swift */; };
+		1A0F3E9F28F9491D0094141E /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0F3E9E28F9491D0094141E /* MenuCollectionViewCell.swift */; };
+		1A0F3EA128F9B52B0094141E /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A0F3EA028F9B52B0094141E /* MyCollectionViewCell.xib */; };
+		1A0F3EA328F9B64B0094141E /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A0F3EA228F9B64B0094141E /* MenuCollectionViewCell.xib */; };
+		1A0F3EA528F9CE9A0094141E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0F3EA428F9CE9A0094141E /* Constants.swift */; };
+		1AB57E912902854400709C54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AB57E902902854300709C54 /* GoogleService-Info.plist */; };
 		1AC1AFA528F9340000772167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1AFA428F9340000772167 /* AppDelegate.swift */; };
-		1AC1AFA728F9340000772167 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1AFA628F9340000772167 /* SceneDelegate.swift */; };
 		1AC1AFA928F9340000772167 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1AFA828F9340000772167 /* ViewController.swift */; };
 		1AC1AFAC28F9340000772167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AC1AFAA28F9340000772167 /* Main.storyboard */; };
 		1AC1AFAE28F9340600772167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AC1AFAD28F9340600772167 /* Assets.xcassets */; };
 		1AC1AFB128F9340600772167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AC1AFAF28F9340600772167 /* LaunchScreen.storyboard */; };
+		1AC1AFB928F9394700772167 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1AFB828F9394700772167 /* MyCollectionViewCell.swift */; };
+		BF9FDEDB84217428820B467E /* Pods_DSMCafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0B355654880FFD507A4376 /* Pods_DSMCafe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A0F3E9C28F949090094141E /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		1A0F3E9E28F9491D0094141E /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		1A0F3EA028F9B52B0094141E /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
+		1A0F3EA228F9B64B0094141E /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
+		1A0F3EA428F9CE9A0094141E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1AB57E902902854300709C54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1AC1AFA128F9340000772167 /* DSMCafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSMCafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC1AFA428F9340000772167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1AC1AFA628F9340000772167 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1AC1AFA828F9340000772167 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1AC1AFAB28F9340000772167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1AC1AFAD28F9340600772167 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1AC1AFB028F9340600772167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1AC1AFB228F9340600772167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AC1AFB828F9394700772167 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		22BACC4544F51669213BADAA /* Pods-DSMCafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DSMCafe.debug.xcconfig"; path = "Target Support Files/Pods-DSMCafe/Pods-DSMCafe.debug.xcconfig"; sourceTree = "<group>"; };
+		919ACD569F81C0CEC850625D /* Pods-DSMCafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DSMCafe.release.xcconfig"; path = "Target Support Files/Pods-DSMCafe/Pods-DSMCafe.release.xcconfig"; sourceTree = "<group>"; };
+		EC0B355654880FFD507A4376 /* Pods_DSMCafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DSMCafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF9FDEDB84217428820B467E /* Pods_DSMCafe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +59,8 @@
 			children = (
 				1AC1AFA328F9340000772167 /* DSMCafe */,
 				1AC1AFA228F9340000772167 /* Products */,
+				A95376722996A787C6152BDD /* Pods */,
+				8CF10EF5070C49359FCC0F85 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +76,37 @@
 			isa = PBXGroup;
 			children = (
 				1AC1AFA428F9340000772167 /* AppDelegate.swift */,
-				1AC1AFA628F9340000772167 /* SceneDelegate.swift */,
 				1AC1AFA828F9340000772167 /* ViewController.swift */,
+				1AC1AFB828F9394700772167 /* MyCollectionViewCell.swift */,
+				1A0F3EA028F9B52B0094141E /* MyCollectionViewCell.xib */,
+				1A0F3E9C28F949090094141E /* OrderViewController.swift */,
+				1AB57E902902854300709C54 /* GoogleService-Info.plist */,
+				1A0F3E9E28F9491D0094141E /* MenuCollectionViewCell.swift */,
+				1A0F3EA228F9B64B0094141E /* MenuCollectionViewCell.xib */,
 				1AC1AFAA28F9340000772167 /* Main.storyboard */,
 				1AC1AFAD28F9340600772167 /* Assets.xcassets */,
 				1AC1AFAF28F9340600772167 /* LaunchScreen.storyboard */,
 				1AC1AFB228F9340600772167 /* Info.plist */,
+				1A0F3EA428F9CE9A0094141E /* Constants.swift */,
 			);
 			path = DSMCafe;
+			sourceTree = "<group>";
+		};
+		8CF10EF5070C49359FCC0F85 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC0B355654880FFD507A4376 /* Pods_DSMCafe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A95376722996A787C6152BDD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				22BACC4544F51669213BADAA /* Pods-DSMCafe.debug.xcconfig */,
+				919ACD569F81C0CEC850625D /* Pods-DSMCafe.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +116,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AC1AFB528F9340600772167 /* Build configuration list for PBXNativeTarget "DSMCafe" */;
 			buildPhases = (
+				DFC074E1EFED4029A14F65F6 /* [CP] Check Pods Manifest.lock */,
 				1AC1AF9D28F9340000772167 /* Sources */,
 				1AC1AF9E28F9340000772167 /* Frameworks */,
 				1AC1AF9F28F9340000772167 /* Resources */,
+				1D7BAC2D23B590A986B36504 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,11 +171,56 @@
 			files = (
 				1AC1AFB128F9340600772167 /* LaunchScreen.storyboard in Resources */,
 				1AC1AFAE28F9340600772167 /* Assets.xcassets in Resources */,
+				1A0F3EA328F9B64B0094141E /* MenuCollectionViewCell.xib in Resources */,
 				1AC1AFAC28F9340000772167 /* Main.storyboard in Resources */,
+				1AB57E912902854400709C54 /* GoogleService-Info.plist in Resources */,
+				1A0F3EA128F9B52B0094141E /* MyCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1D7BAC2D23B590A986B36504 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DSMCafe/Pods-DSMCafe-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DSMCafe/Pods-DSMCafe-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DSMCafe/Pods-DSMCafe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DFC074E1EFED4029A14F65F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DSMCafe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1AC1AF9D28F9340000772167 /* Sources */ = {
@@ -140,7 +229,10 @@
 			files = (
 				1AC1AFA928F9340000772167 /* ViewController.swift in Sources */,
 				1AC1AFA528F9340000772167 /* AppDelegate.swift in Sources */,
-				1AC1AFA728F9340000772167 /* SceneDelegate.swift in Sources */,
+				1AC1AFB928F9394700772167 /* MyCollectionViewCell.swift in Sources */,
+				1A0F3E9D28F949090094141E /* OrderViewController.swift in Sources */,
+				1A0F3E9F28F9491D0094141E /* MenuCollectionViewCell.swift in Sources */,
+				1A0F3EA528F9CE9A0094141E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -282,6 +374,7 @@
 		};
 		1AC1AFB628F9340600772167 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22BACC4544F51669213BADAA /* Pods-DSMCafe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -293,8 +386,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,6 +404,7 @@
 		};
 		1AC1AFB728F9340600772167 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 919ACD569F81C0CEC850625D /* Pods-DSMCafe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -321,8 +416,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
