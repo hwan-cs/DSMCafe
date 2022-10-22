@@ -13,12 +13,15 @@
 		1A0F3EA328F9B64B0094141E /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A0F3EA228F9B64B0094141E /* MenuCollectionViewCell.xib */; };
 		1A0F3EA528F9CE9A0094141E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0F3EA428F9CE9A0094141E /* Constants.swift */; };
 		1AB57E912902854400709C54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AB57E902902854300709C54 /* GoogleService-Info.plist */; };
+		1AB57E9429044C1300709C54 /* OrdersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB57E9229044C1300709C54 /* OrdersCollectionViewCell.swift */; };
+		1AB57E9529044C1400709C54 /* OrdersCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB57E9329044C1300709C54 /* OrdersCollectionViewCell.xib */; };
 		1AC1AFA528F9340000772167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1AFA428F9340000772167 /* AppDelegate.swift */; };
 		1AC1AFA928F9340000772167 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1AFA828F9340000772167 /* ViewController.swift */; };
 		1AC1AFAC28F9340000772167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AC1AFAA28F9340000772167 /* Main.storyboard */; };
 		1AC1AFAE28F9340600772167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AC1AFAD28F9340600772167 /* Assets.xcassets */; };
 		1AC1AFB128F9340600772167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AC1AFAF28F9340600772167 /* LaunchScreen.storyboard */; };
 		1AC1AFB928F9394700772167 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1AFB828F9394700772167 /* MyCollectionViewCell.swift */; };
+		1AECCE2D29045195000BA342 /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECCE2C29045195000BA342 /* AdminViewController.swift */; };
 		BF9FDEDB84217428820B467E /* Pods_DSMCafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0B355654880FFD507A4376 /* Pods_DSMCafe.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,8 @@
 		1A0F3EA228F9B64B0094141E /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
 		1A0F3EA428F9CE9A0094141E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1AB57E902902854300709C54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1AB57E9229044C1300709C54 /* OrdersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersCollectionViewCell.swift; sourceTree = "<group>"; };
+		1AB57E9329044C1300709C54 /* OrdersCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrdersCollectionViewCell.xib; sourceTree = "<group>"; };
 		1AC1AFA128F9340000772167 /* DSMCafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSMCafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC1AFA428F9340000772167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AC1AFA828F9340000772167 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +42,7 @@
 		1AC1AFB028F9340600772167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1AC1AFB228F9340600772167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AC1AFB828F9394700772167 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		1AECCE2C29045195000BA342 /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		22BACC4544F51669213BADAA /* Pods-DSMCafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DSMCafe.debug.xcconfig"; path = "Target Support Files/Pods-DSMCafe/Pods-DSMCafe.debug.xcconfig"; sourceTree = "<group>"; };
 		919ACD569F81C0CEC850625D /* Pods-DSMCafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DSMCafe.release.xcconfig"; path = "Target Support Files/Pods-DSMCafe/Pods-DSMCafe.release.xcconfig"; sourceTree = "<group>"; };
 		EC0B355654880FFD507A4376 /* Pods_DSMCafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DSMCafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,14 +86,17 @@
 				1AC1AFB828F9394700772167 /* MyCollectionViewCell.swift */,
 				1A0F3EA028F9B52B0094141E /* MyCollectionViewCell.xib */,
 				1A0F3E9C28F949090094141E /* OrderViewController.swift */,
-				1AB57E902902854300709C54 /* GoogleService-Info.plist */,
 				1A0F3E9E28F9491D0094141E /* MenuCollectionViewCell.swift */,
 				1A0F3EA228F9B64B0094141E /* MenuCollectionViewCell.xib */,
 				1AC1AFAA28F9340000772167 /* Main.storyboard */,
-				1AC1AFAD28F9340600772167 /* Assets.xcassets */,
 				1AC1AFAF28F9340600772167 /* LaunchScreen.storyboard */,
-				1AC1AFB228F9340600772167 /* Info.plist */,
+				1AECCE2C29045195000BA342 /* AdminViewController.swift */,
+				1AB57E9229044C1300709C54 /* OrdersCollectionViewCell.swift */,
+				1AB57E9329044C1300709C54 /* OrdersCollectionViewCell.xib */,
 				1A0F3EA428F9CE9A0094141E /* Constants.swift */,
+				1AB57E902902854300709C54 /* GoogleService-Info.plist */,
+				1AC1AFB228F9340600772167 /* Info.plist */,
+				1AC1AFAD28F9340600772167 /* Assets.xcassets */,
 			);
 			path = DSMCafe;
 			sourceTree = "<group>";
@@ -172,6 +181,7 @@
 				1AC1AFB128F9340600772167 /* LaunchScreen.storyboard in Resources */,
 				1AC1AFAE28F9340600772167 /* Assets.xcassets in Resources */,
 				1A0F3EA328F9B64B0094141E /* MenuCollectionViewCell.xib in Resources */,
+				1AB57E9529044C1400709C54 /* OrdersCollectionViewCell.xib in Resources */,
 				1AC1AFAC28F9340000772167 /* Main.storyboard in Resources */,
 				1AB57E912902854400709C54 /* GoogleService-Info.plist in Resources */,
 				1A0F3EA128F9B52B0094141E /* MyCollectionViewCell.xib in Resources */,
@@ -228,8 +238,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AC1AFA928F9340000772167 /* ViewController.swift in Sources */,
+				1AB57E9429044C1300709C54 /* OrdersCollectionViewCell.swift in Sources */,
 				1AC1AFA528F9340000772167 /* AppDelegate.swift in Sources */,
 				1AC1AFB928F9394700772167 /* MyCollectionViewCell.swift in Sources */,
+				1AECCE2D29045195000BA342 /* AdminViewController.swift in Sources */,
 				1A0F3E9D28F949090094141E /* OrderViewController.swift in Sources */,
 				1A0F3E9F28F9491D0094141E /* MenuCollectionViewCell.swift in Sources */,
 				1A0F3EA528F9CE9A0094141E /* Constants.swift in Sources */,

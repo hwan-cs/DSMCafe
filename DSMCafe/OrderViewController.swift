@@ -76,27 +76,32 @@ class OrderViewController: UIViewController
                         for doc in snapshotDocuments
                         {
                             let data = doc.data()
-                            maxOrderNum = data.keys.sorted().suffix(1).first!
-                            maxOrderNum = maxOrderNum.formatToOrderNum()
+                            if let num = data.keys.sorted().suffix(1).first
+                            {
+                                maxOrderNum = num.formatToOrderNum()
+                            }
                         }
                     }
                 }
             }
         }
-        var foo = "\n"
+        var total = 0
+        var foo = "\n\n"
         var dict : [String:Int] = [:]
         for i in 0..<self.orderArray.count
         {
             foo += "\(self.orderArray[i]) \(self.menuArray[self.orderArray[i]]![1])개\n"
             dict[self.orderArray[i]] = self.menuArray[self.orderArray[i]]![1]
+            total += self.menuArray[self.orderArray[i]]![1] * self.menuArray[self.orderArray[i]]![0]
         }
-        let alert = UIAlertController(title: "주문", message: "주문 하시겠습니까?\(foo)", preferredStyle: .alert)
+        dict["price"] = total
+        let alert = UIAlertController(title: "주문", message: "주문 하시겠습니까?\(foo)\n\(total)원", preferredStyle: .alert)
         //예외처리 해야됨
         let action = UIAlertAction(title: "예", style: .default)
         { (action) in
             Task.init
             {
-                try await self.db.collection("orders").document().setData([maxOrderNum : dict])
+                try await self.db.collection("orders").document("list").updateData([maxOrderNum : dict])
             }
             self.dismiss(animated: true, completion: nil)
         }

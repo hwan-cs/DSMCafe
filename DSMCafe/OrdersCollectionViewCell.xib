@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OrdersCollectionVC" id="gTV-IL-0wX" customClass="OrdersCollectionViewCell" customModule="DSMCafe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="187" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="187" height="300"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#0001" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GwV-2g-nZg">
+                        <rect key="frame" x="20" y="11.999999999999996" width="147" height="52.666666666666657"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="44"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLI-nz-KbH">
+                        <rect key="frame" x="20" y="72.666666666666671" width="147" height="172.33333333333331"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                        <color key="textColor" systemColor="systemIndigoColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sv-S9-djI">
+                        <rect key="frame" x="20" y="253" width="147" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="Mlb-NO-zA3"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="filled" title="완료"/>
+                        <connections>
+                            <action selector="didTapComplete:" destination="gTV-IL-0wX" eventType="touchUpInside" id="QNN-Ok-wc0"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="GwV-2g-nZg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="1iZ-G6-FQf"/>
+                <constraint firstItem="2Sv-S9-djI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="275-DK-2c8"/>
+                <constraint firstItem="2Sv-S9-djI" firstAttribute="top" secondItem="LLI-nz-KbH" secondAttribute="bottom" constant="8" id="2qT-x3-iVS"/>
+                <constraint firstItem="LLI-nz-KbH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="Eia-4o-Svc"/>
+                <constraint firstItem="GwV-2g-nZg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="G0h-ws-sAL"/>
+                <constraint firstAttribute="trailing" secondItem="LLI-nz-KbH" secondAttribute="trailing" constant="20" id="Iwf-5O-89e"/>
+                <constraint firstAttribute="trailing" secondItem="2Sv-S9-djI" secondAttribute="trailing" constant="20" id="S71-mf-WtA"/>
+                <constraint firstItem="LLI-nz-KbH" firstAttribute="top" secondItem="GwV-2g-nZg" secondAttribute="bottom" constant="8" id="UIs-Ok-PYi"/>
+                <constraint firstAttribute="bottom" secondItem="2Sv-S9-djI" secondAttribute="bottom" constant="12" id="kZh-ZT-6la"/>
+                <constraint firstAttribute="trailing" secondItem="GwV-2g-nZg" secondAttribute="trailing" constant="20" id="m8n-Wa-mEU"/>
+            </constraints>
+            <size key="customSize" width="187" height="300"/>
+            <connections>
+                <outlet property="orderDetail" destination="LLI-nz-KbH" id="e8E-WY-Re2"/>
+                <outlet property="orderNum" destination="GwV-2g-nZg" id="1NH-kR-mva"/>
+            </connections>
+            <point key="canvasLocation" x="65.384615384615387" y="46.208530805687204"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -48,9 +48,11 @@ class ViewController: UIViewController
         let alertController = UIAlertController(title: "비밀번호를 입력하세요", message: "^___^", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "확인", style: .default, handler: { alert -> Void in
             let textField = alertController.textFields![0] as UITextField
-            if textField.text == "202211050191"
+            if textField.text == "0191"
             {
-                print("OK OKOKO")
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "AdminViewController") as! AdminViewController
+                vc.modalPresentationStyle = .fullScreen
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }))
         alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
