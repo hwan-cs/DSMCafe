@@ -58,6 +58,7 @@
             </constraints>
             <size key="customSize" width="187" height="300"/>
             <connections>
+                <outlet property="orderCompleteButton" destination="2Sv-S9-djI" id="yYf-f1-G7P"/>
                 <outlet property="orderDetail" destination="LLI-nz-KbH" id="e8E-WY-Re2"/>
                 <outlet property="orderNum" destination="GwV-2g-nZg" id="1NH-kR-mva"/>
             </connections>

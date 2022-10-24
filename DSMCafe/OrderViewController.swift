@@ -45,7 +45,7 @@ class OrderViewController: UIViewController
         var flag = sender.value > 0 ? true:false
         let cell = self.collectionView.cellForItem(at: IndexPath(item: sender.tag, section: 0)) as! MenuCollectionViewCell
         cell.foodCount.text = "담은 수량: \(Int(sender.value))"
-        cell.contentView.backgroundColor = flag ? .systemRed : UIColor(red: 0.96, green: 0.96, blue: 0.86, alpha: 1.00)
+        cell.contentView.backgroundColor = flag ? .systemOrange : UIColor(red: 0.96, green: 0.96, blue: 0.86, alpha: 1.00)
         
         if !(self.orderArray.contains(self.foodName[sender.tag]!)) && Int(sender.value) > 0
         {
@@ -103,7 +103,10 @@ class OrderViewController: UIViewController
             {
                 try await self.db.collection("orders").document("list").updateData([maxOrderNum : dict])
             }
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true)
+            {
+                self.dismiss(animated: true)
+            }
         }
         alert.addAction(action)
         alert.addAction(UIAlertAction(title: "아니오", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -180,7 +183,7 @@ extension OrderViewController: UICollectionViewDataSource
         cell.infoPopTipText = "이게 무슨음식일까요?"
         cell.stepper.addTarget(self, action: #selector(stepperChanged), for: .valueChanged)
         cell.backgroundColor = .gray
-        cell.contentView.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.86, alpha: 1.00)
+        cell.contentView.backgroundColor = cell.stepper.value > 0 ? .systemOrange : UIColor(red: 0.96, green: 0.96, blue: 0.86, alpha: 1.00)
         cell.layer.cornerRadius = 8.0
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.lightGray.cgColor

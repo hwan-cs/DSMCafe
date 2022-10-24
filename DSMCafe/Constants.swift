@@ -11,5 +11,5 @@ import UIKit
 struct K
 {
     static var counter = 0
-    
+    static var completedOrders = [String]()
 }
