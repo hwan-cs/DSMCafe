@@ -44,7 +44,22 @@ class OrderViewController: UIViewController
         var flag = sender.value > 0 ? true:false
         let cell = self.collectionView.cellForItem(at: IndexPath(item: sender.tag, section: 0)) as! MenuCollectionViewCell
         cell.foodCount.text = "담은 수량: \(Int(sender.value))"
-        cell.contentView.backgroundColor = flag ? .systemOrange : UIColor(red: 0.92, green: 0.35, blue: 0.41, alpha: 1.00)
+        
+        var color = UIColor.systemBrown
+        if cell.foodName.text!.contains("식사류")
+        {
+            color = UIColor(red: 0.92, green: 0.35, blue: 0.41, alpha: 1.00)
+        }
+        else if cell.foodName.text!.contains("사이드메뉴")
+        {
+            color = .systemTeal
+        }
+        else if cell.foodName.text!.contains("디저트류")
+        {
+            color = .systemPurple
+        }
+        
+        cell.contentView.backgroundColor = flag ? .systemOrange : color
         if !(self.orderArray.contains(self.foodName[sender.tag]!)) && Int(sender.value) > 0
         {
             self.orderArray.append(self.foodName[sender.tag]!)
@@ -181,6 +196,7 @@ extension OrderViewController: UICollectionViewDataSource
         {
             color = .systemPurple
         }
+        cell.foodImage.image = UIImage(named: String(indexPath.item))
         cell.contentView.backgroundColor = cell.stepper.value > 0 ? .systemOrange : color
         cell.layer.cornerRadius = 8.0
         cell.layer.borderWidth = 1.0
