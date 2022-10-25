@@ -18,11 +18,10 @@ class OrderViewController: UIViewController
     
     @IBOutlet var orderButton: UIButton!
     
-    var foodName = [0:"햄버거", 1: "피자", 2: "치킨", 3: "시금치", 4: "김치", 5: "가지볶음", 6: "치즈", 7:"감자튀김",
-                    8: "샐러드", 9:"파스타", 10:"부리또", 11:"타코", 12: "설렁탕", 13:"순대국밥", 14: "케밥", 15:"아무거나",
-                    16: "짜장면", 17:"짬뽕", 18:"탕수육", 19:"샌드위치", 20:"빼빼로"]
+    var foodName = [0:"<식사류>\n어묵탕 + 치킨마요", 1: "<식사류>\n라구파스타", 2: "<사이드메뉴>\n어묵탕", 3: "<사이드메뉴>\n연어샐러드/리코타샐러드", 4: "<디저트류>\n크로플 (with 아이스크림)", 5: "<디저트류>\n치즈케이크", 6: "<디저트류>\n브라우니 (with 아이스크림)", 7:"<디저트류>\n붕어빵",
+                    8: "<음료>\n아메리카노", 9:"<음료>\n카페라떼", 10:"<음료>\n아샷추", 11:"<음료>\n레몬/자몽에이드", 12: "<음료>\n캐모마일/페퍼민트/얼그레이 티", 13:"<음료>\n탄산음료 2잔(사이다/콜라)", 14: "<음료>\n탄산음료 2잔(사이다/사이다)", 15:"<음료>\n탄산음료 2잔(콜라/콜라)"]
     
-    var menuArray = ["햄버거":[5000, 0], "피자":[8000, 0], "치킨":[7800,0], "시금치":[2000, 0], "김치":[500, 0], "가지볶음":[3200, 0], "치즈":[900, 0], "감자튀김":[1200, 0], "샐러드":[5000, 0], "파스타":[5000, 0], "부리또":[5000, 0], "타코":[5000, 0], "설렁탕":[5000, 0], "순대국밥":[8000, 0], "케밥":[5000, 0], "아무거나":[8000, 0], "짜장면":[8000, 0], "짬뽕":[8000, 0], "탕수육":[12000, 0], "샌드위치":[5000, 0], "빼빼로":[1000, 0]]
+    var menuArray = ["<식사류>\n어묵탕 + 치킨마요":[10000, 0], "<식사류>\n라구파스타":[10000, 0], "<사이드메뉴>\n어묵탕":[5000,0], "<사이드메뉴>\n연어샐러드/리코타샐러드":[5000, 0], "<디저트류>\n크로플 (with 아이스크림)":[5000, 0], "<디저트류>\n치즈케이크":[5000, 0], "<디저트류>\n브라우니 (with 아이스크림)":[5000, 0], "<디저트류>\n붕어빵":[5000, 0], "<음료>\n아메리카노":[5000, 0], "<음료>\n카페라떼":[5000, 0], "<음료>\n아샷추":[5000, 0], "<음료>\n레몬/자몽에이드":[5000, 0], "<음료>\n캐모마일/페퍼민트/얼그레이 티":[5000, 0], "<음료>\n탄산음료 2잔(사이다/콜라)":[5000, 0], "<음료>\n탄산음료 2잔(사이다/사이다)":[5000, 0], "<음료>\n탄산음료 2잔(콜라/콜라)":[5000, 0]]
     
     var orderArray = [String]()
     
@@ -169,7 +168,20 @@ extension OrderViewController: UICollectionViewDataSource
         cell.infoPopTipText = "이게 무슨음식일까요?"
         cell.stepper.addTarget(self, action: #selector(stepperChanged), for: .valueChanged)
         cell.backgroundColor = .gray
-        cell.contentView.backgroundColor = cell.stepper.value > 0 ? .systemOrange : UIColor(red: 0.92, green: 0.35, blue: 0.41, alpha: 1.00)
+        var color = UIColor.systemBrown
+        if self.foodName[indexPath.item]!.contains("식사류")
+        {
+            color = UIColor(red: 0.92, green: 0.35, blue: 0.41, alpha: 1.00)
+        }
+        else if self.foodName[indexPath.item]!.contains("사이드메뉴")
+        {
+            color = .systemTeal
+        }
+        else if self.foodName[indexPath.item]!.contains("디저트류")
+        {
+            color = .systemPurple
+        }
+        cell.contentView.backgroundColor = cell.stepper.value > 0 ? .systemOrange : color
         cell.layer.cornerRadius = 8.0
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.lightGray.cgColor

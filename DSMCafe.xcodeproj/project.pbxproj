@@ -22,6 +22,7 @@
 		1AC1AFB128F9340600772167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AC1AFAF28F9340600772167 /* LaunchScreen.storyboard */; };
 		1AC1AFB928F9394700772167 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1AFB828F9394700772167 /* MyCollectionViewCell.swift */; };
 		1AECCE2D29045195000BA342 /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECCE2C29045195000BA342 /* AdminViewController.swift */; };
+		1AECCE2F29083FFC000BA342 /* TTSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECCE2E29083FFC000BA342 /* TTSManager.swift */; };
 		BF9FDEDB84217428820B467E /* Pods_DSMCafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0B355654880FFD507A4376 /* Pods_DSMCafe.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		1AC1AFB228F9340600772167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AC1AFB828F9394700772167 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		1AECCE2C29045195000BA342 /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
+		1AECCE2E29083FFC000BA342 /* TTSManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSManager.swift; sourceTree = "<group>"; };
 		22BACC4544F51669213BADAA /* Pods-DSMCafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DSMCafe.debug.xcconfig"; path = "Target Support Files/Pods-DSMCafe/Pods-DSMCafe.debug.xcconfig"; sourceTree = "<group>"; };
 		919ACD569F81C0CEC850625D /* Pods-DSMCafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DSMCafe.release.xcconfig"; path = "Target Support Files/Pods-DSMCafe/Pods-DSMCafe.release.xcconfig"; sourceTree = "<group>"; };
 		EC0B355654880FFD507A4376 /* Pods_DSMCafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DSMCafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,7 @@
 				1AB57E902902854300709C54 /* GoogleService-Info.plist */,
 				1AC1AFB228F9340600772167 /* Info.plist */,
 				1AC1AFAD28F9340600772167 /* Assets.xcassets */,
+				1AECCE2E29083FFC000BA342 /* TTSManager.swift */,
 			);
 			path = DSMCafe;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				1AB57E9429044C1300709C54 /* OrdersCollectionViewCell.swift in Sources */,
 				1AC1AFA528F9340000772167 /* AppDelegate.swift in Sources */,
 				1AC1AFB928F9394700772167 /* MyCollectionViewCell.swift in Sources */,
+				1AECCE2F29083FFC000BA342 /* TTSManager.swift in Sources */,
 				1AECCE2D29045195000BA342 /* AdminViewController.swift in Sources */,
 				1A0F3E9D28F949090094141E /* OrderViewController.swift in Sources */,
 				1A0F3E9F28F9491D0094141E /* MenuCollectionViewCell.swift in Sources */,
