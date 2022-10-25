@@ -23,6 +23,7 @@ class OrdersCollectionViewCell: UICollectionViewCell
     override func awakeFromNib()
     {
         super.awakeFromNib()
+        self.orderCompleteButton.titleLabel?.numberOfLines = 0
     }
     
     @IBAction func didTapComplete(_ sender: UIButton)
@@ -32,7 +33,6 @@ class OrdersCollectionViewCell: UICollectionViewCell
             if var arr = try await self.db.collection("orders").document("orderInfo").getDocument().data()?["completedOrders"] as? [String]
             {
                 arr.append(orderNum.text!)
-                print(arr)
                 try await self.db.collection("orders").document("orderInfo").updateData(["completedOrders" : arr])
             }
             if var total = try await self.db.collection("orders").document("orderInfo").getDocument().data()?["total"] as? Int

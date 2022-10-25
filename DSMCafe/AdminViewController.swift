@@ -28,7 +28,8 @@ class AdminViewController: UIViewController
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "OrdersCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "OrdersCollectionVC")
-        listener = self.db.collection("users").document("list").addSnapshotListener(
+        
+        self.db.collection("orders").document("list").addSnapshotListener(
         { documentSnapshot, error in
             guard documentSnapshot != nil
             else
@@ -44,9 +45,9 @@ class AdminViewController: UIViewController
             }
         })
         
-        orderInfoListener = self.db.collection("users").document("orderInfo").addSnapshotListener(
+        self.db.collection("orders").document("orderInfo").addSnapshotListener(
         { documentSnapshot, error in
-            guard documentSnapshot != nil
+            guard let document = documentSnapshot
             else
             {
                 print("Error fetching document: \(error!)")
@@ -54,17 +55,34 @@ class AdminViewController: UIViewController
             }
             Task.init
             {
-                let data = try await self.db.collection("orders").document("orderInfo").getDocument().data()
-                K.completedOrders = data!["completedOrders"] as! [String]
+                guard let data = document.data()
+                else
+                {
+                    print("Document data was empty.")
+                            return
+                }
+                K.completedOrders = data["completedOrders"] as! [String]
                 for i in K.completedOrders
                 {
                     let orderNum = Int(i.components(separatedBy: "#")[1])
-                    let cell = self.collectionView.cellForItem(at: IndexPath(item: orderNum!, section: 0)) as! OrdersCollectionViewCell
-                    cell.orderCompleteButton.backgroundColor = .lightGray
-                    self.collectionView.reloadItems(at: [IndexPath(item: orderNum!, section: 0)])
+                    if let cell = self.collectionView.cellForItem(at: IndexPath(item: orderNum!-1, section: 0)) as? OrdersCollectionViewCell
+                    {
+                        self.collectionView.reloadItems(at: [IndexPath(item: orderNum!-1, section: 0)])
+                    }
                 }
             }
         })
+    }
+}
+
+extension AdminViewController: UICollectionViewDelegateFlowLayout
+{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        let height = view.frame.size.height
+        let width = view.frame.size.width
+        // in case you you want the cell to be 40% of your controllers view
+        return CGSize(width: width * 0.2, height: height * 0.3)
     }
 }
 
@@ -79,7 +97,7 @@ extension AdminViewController: UICollectionViewDataSource
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrdersCollectionVC", for: indexPath) as! OrdersCollectionViewCell
         
-        let num = String(indexPath.row).formatToOrderNum()
+        let num = String(self.orders.count - indexPath.row - 1).formatToOrderNum()
         cell.orderNum.text = "#\(num)"
         var txt = ""
         let key = Array(self.orders[num]!.keys)
@@ -94,8 +112,12 @@ extension AdminViewController: UICollectionViewDataSource
             txt += "\(key[i])\t\(val[i])\n"
         }
         cell.orderDetail.text = txt
+        
         cell.backgroundColor = .gray
-        cell.contentView.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.86, alpha: 1.00)
+        cell.contentView.backgroundColor = K.completedOrders.contains("#\(num)") ? .systemPink : UIColor(red: 0.96, green: 0.96, blue: 0.86, alpha: 1.00)
+        cell.orderCompleteButton.tintColor = K.completedOrders.contains("#\(num)") ? .lightGray : .tintColor
+        cell.orderCompleteButton.isUserInteractionEnabled = !K.completedOrders.contains("#\(num)")
+        cell.orderCompleteButton.setTitle(K.completedOrders.contains("#\(num)") ? "완료된 주문입니다" : "완료", for: .normal)
         cell.layer.cornerRadius = 8.0
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.lightGray.cgColor

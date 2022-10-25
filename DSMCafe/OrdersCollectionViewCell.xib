@@ -25,15 +25,15 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLI-nz-KbH">
-                        <rect key="frame" x="20" y="72.666666666666671" width="147" height="172.33333333333331"/>
+                        <rect key="frame" x="20" y="72.666666666666671" width="147" height="152.33333333333331"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <color key="textColor" systemColor="systemIndigoColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sv-S9-djI">
-                        <rect key="frame" x="20" y="253" width="147" height="35"/>
+                        <rect key="frame" x="20" y="233" width="147" height="55"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="35" id="Mlb-NO-zA3"/>
+                            <constraint firstAttribute="height" constant="55" id="Mlb-NO-zA3"/>
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="filled" title="완료"/>

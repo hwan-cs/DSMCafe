@@ -63,25 +63,11 @@ class OrderViewController: UIViewController
         var maxOrderNum = "0001"
         Task.init
         {
-            try await db.collection("orders").getDocuments
-            { querySnapshot, error in
-                if let error = error
+            if let data = try await self.db.collection("orders").document("list").getDocument().data()
+            {
+                if let num = data.keys.sorted().suffix(1).first
                 {
-                    print(error.localizedDescription)
-                }
-                else
-                {
-                    if let snapshotDocuments = querySnapshot?.documents
-                    {
-                        for doc in snapshotDocuments
-                        {
-                            let data = doc.data()
-                            if let num = data.keys.sorted().suffix(1).first
-                            {
-                                maxOrderNum = num.formatToOrderNum()
-                            }
-                        }
-                    }
+                    maxOrderNum = num.formatToOrderNum()
                 }
             }
         }
