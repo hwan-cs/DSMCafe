@@ -91,7 +91,7 @@ extension ViewController: UICollectionViewDataSource
         cell.cellImage.contentMode = .scaleAspectFit
         cell.cellTitle.text = "테이블 #\(indexPath.item+1)"
         cell.backgroundColor = .gray
-        cell.contentView.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.86, alpha: 1.00)
+        cell.contentView.backgroundColor = .systemIndigo
         cell.layer.cornerRadius = 8.0
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.lightGray.cgColor

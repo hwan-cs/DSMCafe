@@ -45,8 +45,7 @@ class OrderViewController: UIViewController
         var flag = sender.value > 0 ? true:false
         let cell = self.collectionView.cellForItem(at: IndexPath(item: sender.tag, section: 0)) as! MenuCollectionViewCell
         cell.foodCount.text = "담은 수량: \(Int(sender.value))"
-        cell.contentView.backgroundColor = flag ? .systemOrange : UIColor(red: 0.96, green: 0.96, blue: 0.86, alpha: 1.00)
-        
+        cell.contentView.backgroundColor = flag ? .systemOrange : UIColor(red: 0.92, green: 0.35, blue: 0.41, alpha: 1.00)
         if !(self.orderArray.contains(self.foodName[sender.tag]!)) && Int(sender.value) > 0
         {
             self.orderArray.append(self.foodName[sender.tag]!)
@@ -164,12 +163,13 @@ extension OrderViewController: UICollectionViewDataSource
         cell.foodImage.image = UIImage(systemName: "eyes.inverse")
         cell.foodName.text = self.foodName[indexPath.item]
         cell.foodCount.text = "담은 수량: \(menuArray[self.foodName[indexPath.item]!]![1])"
+        cell.foodPrice.text = "\((menuArray[self.foodName[indexPath.item]!]![0]))원"
         cell.stepper.minimumValue = 0
         cell.stepper.tag = indexPath.item
         cell.infoPopTipText = "이게 무슨음식일까요?"
         cell.stepper.addTarget(self, action: #selector(stepperChanged), for: .valueChanged)
         cell.backgroundColor = .gray
-        cell.contentView.backgroundColor = cell.stepper.value > 0 ? .systemOrange : UIColor(red: 0.96, green: 0.96, blue: 0.86, alpha: 1.00)
+        cell.contentView.backgroundColor = cell.stepper.value > 0 ? .systemOrange : UIColor(red: 0.92, green: 0.35, blue: 0.41, alpha: 1.00)
         cell.layer.cornerRadius = 8.0
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.lightGray.cgColor

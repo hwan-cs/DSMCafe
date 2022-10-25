@@ -13,6 +13,8 @@ class MenuCollectionViewCell: UICollectionViewCell
 {
     @IBOutlet var foodImage: UIImageView!
     
+    @IBOutlet var foodPrice: UILabel!
+    
     @IBOutlet var foodName: UILabel!
     
     @IBOutlet var foodCount: UILabel!

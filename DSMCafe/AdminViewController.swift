@@ -114,7 +114,7 @@ extension AdminViewController: UICollectionViewDataSource
         cell.orderDetail.text = txt
         
         cell.backgroundColor = .gray
-        cell.contentView.backgroundColor = K.completedOrders.contains("#\(num)") ? .systemPink : UIColor(red: 0.96, green: 0.96, blue: 0.86, alpha: 1.00)
+        cell.contentView.backgroundColor = K.completedOrders.contains("#\(num)") ? .systemPink : UIColor(red: 0.92, green: 0.35, blue: 0.41, alpha: 1.00)
         cell.orderCompleteButton.tintColor = K.completedOrders.contains("#\(num)") ? .lightGray : .tintColor
         cell.orderCompleteButton.isUserInteractionEnabled = !K.completedOrders.contains("#\(num)")
         cell.orderCompleteButton.setTitle(K.completedOrders.contains("#\(num)") ? "완료된 주문입니다" : "완료", for: .normal)

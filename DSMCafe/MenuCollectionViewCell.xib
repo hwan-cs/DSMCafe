@@ -25,19 +25,25 @@
                         <rect key="frame" x="37" y="144" width="120" height="140"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="피자" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uw7-fz-G3B">
-                                <rect key="frame" x="0.0" y="0.0" width="120" height="32"/>
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="18.666666666666668"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가격: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZr-h9-CYH">
+                                <rect key="frame" x="40.666666666666671" y="40.666666666666657" width="38.666666666666671" height="18.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="담은 수량: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hj-Rj-Ah1">
-                                <rect key="frame" x="0.0" y="54" width="120" height="32"/>
+                                <rect key="frame" x="0.0" y="81" width="120" height="18.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xsc-Qw-Dml">
-                                <rect key="frame" x="13" y="108" width="94" height="32"/>
+                                <rect key="frame" x="13" y="121.66666666666667" width="94" height="18.333333333333329"/>
                             </stepper>
                         </subviews>
                         <constraints>
@@ -63,6 +69,7 @@
                 <outlet property="foodCount" destination="8hj-Rj-Ah1" id="hNQ-Da-nDB"/>
                 <outlet property="foodImage" destination="8ew-4C-PNc" id="NSF-sg-p8I"/>
                 <outlet property="foodName" destination="uw7-fz-G3B" id="pio-hd-hgi"/>
+                <outlet property="foodPrice" destination="AZr-h9-CYH" id="xSR-Jd-ZnD"/>
                 <outlet property="stepper" destination="xsc-Qw-Dml" id="Ts0-so-OYe"/>
             </connections>
             <point key="canvasLocation" x="55" y="16"/>
