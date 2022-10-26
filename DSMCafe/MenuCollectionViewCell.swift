@@ -53,6 +53,7 @@ class MenuCollectionViewCell: UICollectionViewCell
     {
         print("Stepper changed \(sender.value)")
         self.foodCount.text = "담은 수량: \(Int(sender.value))"
+        self.foodCount.text = "담은 수량: \(Int(sender.value))"
     }
     
     override func prepareForReuse()

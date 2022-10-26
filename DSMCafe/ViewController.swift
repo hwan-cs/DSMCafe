@@ -77,6 +77,7 @@ extension ViewController: UICollectionViewDelegate
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderViewController") as! OrderViewController
         vc.modalPresentationStyle = .fullScreen
+        vc.tableNo = indexPath.row + 1
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

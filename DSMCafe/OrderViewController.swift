@@ -18,6 +18,8 @@ class OrderViewController: UIViewController
     
     @IBOutlet var orderButton: UIButton!
     
+    var tableNo = 0
+    
     var foodName = ["<식사류>\n어묵탕 + 치킨마요", "<식사류>\n라구파스타", "<사이드메뉴>\n어묵탕", "<사이드메뉴>\n연어샐러드/리코타샐러드", "<디저트류>\n크로플 (with 아이스크림)", "<디저트류>\n치즈케이크", "<디저트류>\n브라우니 (with 아이스크림)", "<디저트류>\n붕어빵",
                     "<음료>\n아메리카노", "<음료>\n카페라떼", "<음료>\n아샷추", "<음료>\n레몬/자몽에이드", "<음료>\n캐모마일/페퍼민트/얼그레이 티", "<음료>\n탄산음료 2잔(사이다/콜라)", "<음료>\n탄산음료 2잔(사이다/사이다)", "<음료>\n탄산음료 2잔(콜라/콜라)", "<식사류 음료>\n콜라", "<식사류 음료>\n사이다"]
     
@@ -77,6 +79,7 @@ class OrderViewController: UIViewController
             total += self.menuArray[self.orderArray[i]]![1] * self.menuArray[self.orderArray[i]]![0]
         }
         dict["price"] = total
+        dict["tableNo"] = self.tableNo
         let alert = UIAlertController(title: "주문", message: "주문 하시겠습니까?\(foo)\n\(total)원", preferredStyle: .alert)
         //예외처리 해야됨
         let action = UIAlertAction(title: "예", style: .default)
