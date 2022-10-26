@@ -24,6 +24,7 @@ class OrdersCollectionViewCell: UICollectionViewCell
     {
         super.awakeFromNib()
         self.orderCompleteButton.titleLabel?.numberOfLines = 0
+        self.orderDetail.textColor = .black
     }
     
     @IBAction func didTapComplete(_ sender: UIButton)
@@ -41,5 +42,7 @@ class OrdersCollectionViewCell: UICollectionViewCell
                 try await self.db.collection("orders").document("orderInfo").updateData(["total" : total])
             }
         }
+        let tts = orderNum.text?.components(separatedBy: "#")[1]
+        TTSManager.shared.play("주문번호 \(tts)번 제작 완료")
     }
 }

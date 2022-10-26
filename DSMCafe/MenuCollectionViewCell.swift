@@ -32,6 +32,9 @@ class MenuCollectionViewCell: UICollectionViewCell
         tap.numberOfTapsRequired = 1
         self.foodImage.isUserInteractionEnabled = true
         self.foodImage.addGestureRecognizer(tap)
+        self.stepper.minimumValue = 0
+        self.stepper.stepValue = 1.0
+        self.stepper.addTarget(self, action: #selector(stepperChanged), for: .valueChanged)
     }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
@@ -44,5 +47,20 @@ class MenuCollectionViewCell: UICollectionViewCell
             self.infoPopTip.hide()
         }
         self.infoPopTip.show(text: self.infoPopTipText!, direction: .auto, maxWidth: 150, in: self.contentView, from: tappedImage.frame)
+    }
+    
+    @objc func stepperChanged(_ sender: UIStepper)
+    {
+        print("Stepper changed \(sender.value)")
+        self.foodCount.text = "담은 수량: \(Int(sender.value))"
+    }
+    
+    override func prepareForReuse()
+    {
+        super.prepareForReuse()
+        for t in self.stepper.allTargets
+        {
+            self.stepper.removeTarget(self, action: t as? Selector, for: .valueChanged)
+        }
     }
 }

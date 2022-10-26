@@ -18,10 +18,10 @@ class OrderViewController: UIViewController
     
     @IBOutlet var orderButton: UIButton!
     
-    var foodName = [0:"<식사류>\n어묵탕 + 치킨마요", 1: "<식사류>\n라구파스타", 2: "<사이드메뉴>\n어묵탕", 3: "<사이드메뉴>\n연어샐러드/리코타샐러드", 4: "<디저트류>\n크로플 (with 아이스크림)", 5: "<디저트류>\n치즈케이크", 6: "<디저트류>\n브라우니 (with 아이스크림)", 7:"<디저트류>\n붕어빵",
-                    8: "<음료>\n아메리카노", 9:"<음료>\n카페라떼", 10:"<음료>\n아샷추", 11:"<음료>\n레몬/자몽에이드", 12: "<음료>\n캐모마일/페퍼민트/얼그레이 티", 13:"<음료>\n탄산음료 2잔(사이다/콜라)", 14: "<음료>\n탄산음료 2잔(사이다/사이다)", 15:"<음료>\n탄산음료 2잔(콜라/콜라)"]
+    var foodName = ["<식사류>\n어묵탕 + 치킨마요", "<식사류>\n라구파스타", "<사이드메뉴>\n어묵탕", "<사이드메뉴>\n연어샐러드/리코타샐러드", "<디저트류>\n크로플 (with 아이스크림)", "<디저트류>\n치즈케이크", "<디저트류>\n브라우니 (with 아이스크림)", "<디저트류>\n붕어빵",
+                    "<음료>\n아메리카노", "<음료>\n카페라떼", "<음료>\n아샷추", "<음료>\n레몬/자몽에이드", "<음료>\n캐모마일/페퍼민트/얼그레이 티", "<음료>\n탄산음료 2잔(사이다/콜라)", "<음료>\n탄산음료 2잔(사이다/사이다)", "<음료>\n탄산음료 2잔(콜라/콜라)", "<식사류 음료>\n콜라", "<식사류 음료>\n사이다"]
     
-    var menuArray = ["<식사류>\n어묵탕 + 치킨마요":[10000, 0], "<식사류>\n라구파스타":[10000, 0], "<사이드메뉴>\n어묵탕":[5000,0], "<사이드메뉴>\n연어샐러드/리코타샐러드":[5000, 0], "<디저트류>\n크로플 (with 아이스크림)":[5000, 0], "<디저트류>\n치즈케이크":[5000, 0], "<디저트류>\n브라우니 (with 아이스크림)":[5000, 0], "<디저트류>\n붕어빵":[5000, 0], "<음료>\n아메리카노":[5000, 0], "<음료>\n카페라떼":[5000, 0], "<음료>\n아샷추":[5000, 0], "<음료>\n레몬/자몽에이드":[5000, 0], "<음료>\n캐모마일/페퍼민트/얼그레이 티":[5000, 0], "<음료>\n탄산음료 2잔(사이다/콜라)":[5000, 0], "<음료>\n탄산음료 2잔(사이다/사이다)":[5000, 0], "<음료>\n탄산음료 2잔(콜라/콜라)":[5000, 0]]
+    var menuArray = ["<식사류>\n어묵탕 + 치킨마요":[10000, 0], "<식사류>\n라구파스타":[10000, 0], "<사이드메뉴>\n어묵탕":[5000,0], "<사이드메뉴>\n연어샐러드/리코타샐러드":[5000, 0], "<디저트류>\n크로플 (with 아이스크림)":[5000, 0], "<디저트류>\n치즈케이크":[5000, 0], "<디저트류>\n브라우니 (with 아이스크림)":[5000, 0], "<디저트류>\n붕어빵":[5000, 0], "<음료>\n아메리카노":[5000, 0], "<음료>\n카페라떼":[5000, 0], "<음료>\n아샷추":[5000, 0], "<음료>\n레몬/자몽에이드":[5000, 0], "<음료>\n캐모마일/페퍼민트/얼그레이 티":[5000, 0], "<음료>\n탄산음료 2잔(사이다/콜라)":[5000, 0], "<음료>\n탄산음료 2잔(사이다/사이다)":[5000, 0], "<음료>\n탄산음료 2잔(콜라/콜라)":[5000, 0], "<식사류 음료>\n콜라":[0,0], "<식사류 음료>\n사이다" : [0,0]]
     
     var orderArray = [String]()
     
@@ -40,34 +40,17 @@ class OrderViewController: UIViewController
     
     @objc func stepperChanged(_ sender: UIStepper!)
     {
-        menuArray[self.foodName[sender.tag]!]![1] = Int(sender.value)
-        var flag = sender.value > 0 ? true:false
-        let cell = self.collectionView.cellForItem(at: IndexPath(item: sender.tag, section: 0)) as! MenuCollectionViewCell
-        cell.foodCount.text = "담은 수량: \(Int(sender.value))"
-        
-        var color = UIColor.systemBrown
-        if cell.foodName.text!.contains("식사류")
+        menuArray[self.foodName[sender.tag]]![1] = Int(sender.value)
+
+        if !(self.orderArray.contains(self.foodName[sender.tag])) && Int(sender.value) > 0
         {
-            color = UIColor(red: 0.92, green: 0.35, blue: 0.41, alpha: 1.00)
-        }
-        else if cell.foodName.text!.contains("사이드메뉴")
-        {
-            color = .systemTeal
-        }
-        else if cell.foodName.text!.contains("디저트류")
-        {
-            color = .systemPurple
-        }
-        
-        cell.contentView.backgroundColor = flag ? .systemOrange : color
-        if !(self.orderArray.contains(self.foodName[sender.tag]!)) && Int(sender.value) > 0
-        {
-            self.orderArray.append(self.foodName[sender.tag]!)
+            self.orderArray.append(self.foodName[sender.tag])
         }
         else if Int(sender.value) == 0
         {
-            self.orderArray.remove(at: self.orderArray.firstIndex(of: self.foodName[sender.tag]!)!)
+            self.orderArray.remove(at: self.orderArray.firstIndex(of: self.foodName[sender.tag])!)
         }
+        self.collectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
         self.tableView.reloadData()
     }
     
@@ -173,31 +156,32 @@ extension OrderViewController: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCollectionViewCell", for: indexPath) as! MenuCollectionViewCell
-        
         cell.foodImage.image = UIImage(systemName: "eyes.inverse")
-        cell.foodName.text = self.foodName[indexPath.item]
-        cell.foodCount.text = "담은 수량: \(menuArray[self.foodName[indexPath.item]!]![1])"
-        cell.foodPrice.text = "\((menuArray[self.foodName[indexPath.item]!]![0]))원"
-        cell.stepper.minimumValue = 0
-        cell.stepper.tag = indexPath.item
+        cell.foodName.text = self.foodName[indexPath.row]
+        cell.foodCount.text = "담은 수량: \(menuArray[self.foodName[indexPath.row]]![1])"
+        cell.foodPrice.text = "\((menuArray[self.foodName[indexPath.row]]![0]))원"
+        cell.stepper.tag = indexPath.row
+        cell.stepper.value = Double(menuArray[self.foodName[indexPath.row]]![1])
         cell.infoPopTipText = "이게 무슨음식일까요?"
-        cell.stepper.addTarget(self, action: #selector(stepperChanged), for: .valueChanged)
-        cell.backgroundColor = .gray
+        if cell.stepper.allTargets.count == 1
+        {
+            cell.stepper.addTarget(self, action: #selector(stepperChanged(_ :)), for: .valueChanged)
+        }
         var color = UIColor.systemBrown
-        if self.foodName[indexPath.item]!.contains("식사류")
+        if cell.foodName.text!.contains("식사류")
         {
             color = UIColor(red: 0.92, green: 0.35, blue: 0.41, alpha: 1.00)
         }
-        else if self.foodName[indexPath.item]!.contains("사이드메뉴")
+        else if cell.foodName.text!.contains("사이드메뉴")
         {
             color = .systemTeal
         }
-        else if self.foodName[indexPath.item]!.contains("디저트류")
+        else if cell.foodName.text!.contains("디저트류")
         {
             color = .systemPurple
         }
-        cell.foodImage.image = UIImage(named: String(indexPath.item))
-        cell.contentView.backgroundColor = cell.stepper.value > 0 ? .systemOrange : color
+        cell.foodImage.image = UIImage(named: String(indexPath.row))
+        cell.backgroundColor = menuArray[self.foodName[indexPath.row]]![1] > 0 ? .systemOrange : color
         cell.layer.cornerRadius = 8.0
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.lightGray.cgColor
@@ -224,6 +208,7 @@ extension OrderViewController: UITableViewDataSource
         config.text = self.orderArray[indexPath.row]
         config.secondaryText = "\(String(menuArray[self.orderArray[indexPath.row]]![1]))개"
         cell.contentConfiguration = config
+        cell.selectionStyle = .none
         return cell
     }
     

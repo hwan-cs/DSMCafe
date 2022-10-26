@@ -100,9 +100,9 @@ class AdminViewController: UIViewController
                 for i in K.completedOrders
                 {
                     let orderNum = Int(i.components(separatedBy: "#")[1])
-                    if let cell = self.collectionView.cellForItem(at: IndexPath(item: orderNum!-1, section: 0)) as? OrdersCollectionViewCell
+                    if self.collectionView.dequeueReusableCell(withReuseIdentifier: "OrdersCollectionVC", for: IndexPath(row: self.orders.count - orderNum! - 2, section: 0)) is OrdersCollectionViewCell
                     {
-                        self.collectionView.reloadItems(at: [IndexPath(item: orderNum!-1, section: 0)])
+                        self.collectionView.reloadItems(at: [IndexPath(row: self.orders.count - orderNum! - 2, section: 0)])
                     }
                 }
             }
@@ -136,7 +136,6 @@ extension AdminViewController: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrdersCollectionVC", for: indexPath) as! OrdersCollectionViewCell
-        
         let num = String(self.orders.count - indexPath.row - 1).formatToOrderNum()
         cell.orderNum.text = "#\(num)"
         var txt = ""
@@ -149,7 +148,8 @@ extension AdminViewController: UICollectionViewDataSource
                 cell.price = val[i]
                 continue
             }
-            txt += "\(key[i])\t\(val[i])\n"
+            let k = key[i] as! String
+            txt += "\(k.components(separatedBy: "\n")[1])\t- \(val[i])\n"
         }
         cell.orderDetail.text = txt
         
