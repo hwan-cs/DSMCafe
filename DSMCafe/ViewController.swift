@@ -17,9 +17,19 @@ class ViewController: UIViewController
     
     @IBOutlet var adminImage: UIImageView!
     
+    @IBOutlet var scrollText: UILabel!
+
+    @IBOutlet var scrollView: UIScrollView!
+    
     var timer: Timer?
     
     var flag = false
+    
+    var offset = 0
+    
+    @IBOutlet var scrollTextWidth: NSLayoutConstraint!
+    
+//    @IBOutlet var scrollTextWidth: NSLayoutConstraint!
     
     override func viewDidLoad()
     {
@@ -37,10 +47,45 @@ class ViewController: UIViewController
         titleLabel.text = "환영합니다"
         titleLabel.start()
         
+        scrollText.text = "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕"
+        
+        scrollView.showsHorizontalScrollIndicator = true
+        scrollText.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.isUserInteractionEnabled = false
+        scrollText.backgroundColor = .black
+        scrollView.layer.cornerRadius = 12
+        scrollText.layer.cornerRadius = 12
+        scrollText.textColor = .white
+        scrollTextWidth.constant = scrollText.intrinsicContentSize.width
+        
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(moveText), userInfo: nil, repeats: true)
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(tripleTapped))
         tap.numberOfTapsRequired = 3
         adminImage.isUserInteractionEnabled = true
         adminImage.addGestureRecognizer(tap)
+    }
+    
+    @objc func moveText()
+    {
+        self.scrollView.setContentOffset(CGPoint(x: self.offset, y: 0), animated: true)
+        self.offset += 10
+        if self.offset % 30 == 0
+        {
+            self.scrollText.textColor = .systemPink
+        }
+        else if self.offset % 20 == 0
+        {
+            self.scrollText.textColor = .magenta
+        }
+        else
+        {
+            self.scrollText.textColor = .white
+        }
+        if CGFloat(self.offset) > scrollText.intrinsicContentSize.width - 20
+        {
+            self.offset = 0
+        }
     }
     
     @objc func tripleTapped()
