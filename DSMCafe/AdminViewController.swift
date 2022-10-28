@@ -58,7 +58,10 @@ class AdminViewController: UIViewController
                         }
                     }
                 }
-                self.orders = data as! [String:[String:Int]]
+                if self.orders != data as! [String: [String:Int]]
+                {
+                    self.orders = data as! [String: [String: Int]]
+                }
                 self.collectionView.reloadData()
                 self.collectionView.performBatchUpdates(nil)
                 { result in
@@ -96,8 +99,10 @@ class AdminViewController: UIViewController
                     print("Document data was empty.")
                             return
                 }
-                K.completedOrders = data["completedOrders"] as! [String]
-                print(K.completedOrders)
+                if let d = data["completedOrders"] as? [String]
+                {
+                    K.completedOrders = d
+                }
                 for i in K.completedOrders
                 {
                     let foobar = i.components(separatedBy: " - ")[0]
@@ -120,7 +125,7 @@ extension AdminViewController: UICollectionViewDelegateFlowLayout
         let height = view.frame.size.height
         let width = view.frame.size.width
         // in case you you want the cell to be 40% of your controllers view
-        return CGSize(width: width * 0.2, height: height * 0.4)
+        return CGSize(width: width * 0.3, height: height * 0.55)
     }
 }
 
@@ -155,6 +160,81 @@ extension AdminViewController: UICollectionViewDataSource
                 cell.orderNum.text = "#\(num) - #\(val[i])"
                 continue
             }
+            else if key[i] == "salad"
+            {
+                if val[i] == 1
+                {
+                    cell.saladTeam.tintColor = .magenta
+                    cell.saladTeam.setTitle("샐러드팀 서빙 중", for: .normal)
+                }
+                else if val[i] == 2
+                {
+                    cell.saladTeam.isUserInteractionEnabled = false
+                    cell.saladTeam.tintColor = .lightGray
+                    cell.saladTeam.setTitle("서빙 완료", for: .normal)
+                }
+                continue
+            }
+            else if key[i] == "pasta"
+            {
+                if val[i] == 1
+                {
+                    cell.pastaTeam.tintColor = .magenta
+                    cell.pastaTeam.setTitle("파스타팀 서빙 중", for: .normal)
+                }
+                else if val[i] == 2
+                {
+                    cell.pastaTeam.isUserInteractionEnabled = false
+                    cell.pastaTeam.tintColor = .lightGray
+                    cell.pastaTeam.setTitle("서빙 완료", for: .normal)
+                }
+                continue
+            }
+            else if key[i] == "db"
+            {
+                if val[i] == 1
+                {
+                    cell.dbTeam.tintColor = .magenta
+                    cell.dbTeam.setTitle("덮밥팀 서빙 중", for: .normal)
+                }
+                else if val[i] == 2
+                {
+                    cell.dbTeam.isUserInteractionEnabled = false
+                    cell.dbTeam.tintColor = .lightGray
+                    cell.dbTeam.setTitle("서빙 완료", for: .normal)
+                }
+                continue
+            }
+            else if key[i] == "dessert"
+            {
+                if val[i] == 1
+                {
+                    cell.dessertTeam.tintColor = .magenta
+                    cell.dessertTeam.setTitle("디저트팀 서빙 중", for: .normal)
+                }
+                else if val[i] == 2
+                {
+                    cell.dessertTeam.isUserInteractionEnabled = false
+                    cell.dessertTeam.tintColor = .lightGray
+                    cell.dessertTeam.setTitle("서빙 완료", for: .normal)
+                }
+                continue
+            }
+            else if key[i] == "drink"
+            {
+                if val[i] == 1
+                {
+                    cell.drinkTeam.tintColor = .magenta
+                    cell.drinkTeam.setTitle("음료팀 서빙 중", for: .normal)
+                }
+                else if val[i] == 2
+                {
+                    cell.drinkTeam.isUserInteractionEnabled = false
+                    cell.drinkTeam.tintColor = .lightGray
+                    cell.drinkTeam.setTitle("서빙 완료", for: .normal)
+                }
+                continue
+            }
             let k = key[i] as! String
             txt += "\(k.components(separatedBy: "\n")[1])\t - \(val[i])\n"
         }
@@ -170,13 +250,33 @@ extension AdminViewController: UICollectionViewDataSource
             }
         }
         cell.contentView.backgroundColor = flag ? .systemMint : UIColor(red: 0.92, green: 0.35, blue: 0.401, alpha: 1.00)
-        cell.orderCompleteButton.tintColor = flag ? .lightGray : .tintColor
-        cell.orderCompleteButton.isUserInteractionEnabled = !flag
-        cell.orderCompleteButton.setTitle(flag ? "완료된 주문입니다" : "완료", for: .normal)
         cell.layer.cornerRadius = 8.0
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.lightGray.cgColor
         
+        if !cell.drinkTeam.isUserInteractionEnabled && !cell.dbTeam.isUserInteractionEnabled && !cell.dessertTeam.isUserInteractionEnabled && !cell.pastaTeam.isUserInteractionEnabled && !cell.saladTeam.isUserInteractionEnabled
+        {
+            Task.init
+            {
+                if var arr = try await self.db.collection("orders").document("orderInfo").getDocument().data()?["completedOrders"] as? [String]
+                {
+                    if arr.contains(cell.orderNum.text!)
+                    {
+                        return
+                    }
+                    else
+                    {
+                        arr.append(cell.orderNum.text!)
+                    }
+                    try await self.db.collection("orders").document("orderInfo").updateData(["completedOrders" : arr])
+                }
+                if var total = try await self.db.collection("orders").document("orderInfo").getDocument().data()?["total"] as? Int
+                {
+                    total += cell.price!
+                    try await self.db.collection("orders").document("orderInfo").updateData(["total" : total])
+                }
+            }
+        }
         return cell
     }
     

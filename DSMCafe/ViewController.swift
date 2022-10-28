@@ -47,7 +47,7 @@ class ViewController: UIViewController
         titleLabel.text = "환영합니다"
         titleLabel.start()
         
-        scrollText.text = "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕"
+        scrollText.text = "건국대 DSM일동은 일일카페 서빙팀 및 주방팀을 응원 합니다 - 초희G: 알감자 콩감자 돼지감자, 정환G: 건덧셈 최고!, 동운G: 건덧셈 화이팅~, 동운G: 건덧셈 최고!, 동운G: 철야 끝나고 뚝섬으로 집합, 병욱G: 솔직히 좋아해"
         
         scrollView.showsHorizontalScrollIndicator = true
         scrollText.translatesAutoresizingMaskIntoConstraints = false

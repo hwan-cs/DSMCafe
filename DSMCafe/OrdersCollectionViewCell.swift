@@ -14,7 +14,15 @@ class OrdersCollectionViewCell: UICollectionViewCell
     
     @IBOutlet var orderDetail: UILabel!
     
-    @IBOutlet var orderCompleteButton: UIButton!
+    @IBOutlet var saladTeam: UIButton!
+    
+    @IBOutlet var dbTeam: UIButton!
+    
+    @IBOutlet var pastaTeam: UIButton!
+    
+    @IBOutlet var drinkTeam: UIButton!
+    
+    @IBOutlet var dessertTeam: UIButton!
     
     var price: Int?
     
@@ -23,26 +31,162 @@ class OrdersCollectionViewCell: UICollectionViewCell
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        self.orderCompleteButton.titleLabel?.numberOfLines = 0
         self.orderDetail.textColor = .black
+        
     }
     
-    @IBAction func didTapComplete(_ sender: UIButton)
+    @IBAction func saladTeamDidTap(_ sender: UIButton)
     {
-        Task.init
-        {
-            if var arr = try await self.db.collection("orders").document("orderInfo").getDocument().data()?["completedOrders"] as? [String]
+        self.db.collection("orders").document("list").getDocument
+        { documentSnapshot, error in
+            if let e = error
             {
-                arr.append(orderNum.text!)
-                try await self.db.collection("orders").document("orderInfo").updateData(["completedOrders" : arr])
+                print("There was an issue retrieving data from Firestore \(e)")
             }
-            if var total = try await self.db.collection("orders").document("orderInfo").getDocument().data()?["total"] as? Int
+            else
             {
-                total += self.price!
-                try await self.db.collection("orders").document("orderInfo").updateData(["total" : total])
+                if let data = documentSnapshot?.data()
+                {
+                    let foobar = self.orderNum.text!.components(separatedBy: " - ")[0]
+                    let orderNum = foobar.components(separatedBy: "#")[1]
+                    var foo = data[orderNum] as! [String: Int]
+                    var salad = foo["salad"]!
+                    foo.updateValue(salad+1, forKey: "salad")
+                    if salad+1 == 2
+                    {
+                        TTSManager.shared.play("샐러드팀 서빙 완료")
+                    }
+                    documentSnapshot?.reference.updateData([orderNum: foo])
+                }
             }
         }
-        let tts = orderNum.text?.components(separatedBy: "#")[1]
-        TTSManager.shared.play("주문번호 \(tts)번 제작 완료")
+    }
+    
+    @IBAction func dbTeamDidTap(_ sender: UIButton)
+    {
+        self.db.collection("orders").document("list").getDocument
+        { documentSnapshot, error in
+            if let e = error
+            {
+                print("There was an issue retrieving data from Firestore \(e)")
+            }
+            else
+            {
+                if let data = documentSnapshot?.data()
+                {
+                    let foobar = self.orderNum.text!.components(separatedBy: " - ")[0]
+                    let orderNum = foobar.components(separatedBy: "#")[1]
+                    var foo = data[orderNum] as! [String: Int]
+                    var db = foo["db"]!
+                    foo.updateValue(db+1, forKey: "db")
+                    if db+1 == 2
+                    {
+                        TTSManager.shared.play("덮밥팀 서빙 완료")
+                    }
+                    documentSnapshot?.reference.updateData([orderNum: foo])
+                }
+            }
+        }
+    }
+    
+    @IBAction func pastaTeamDIdTap(_ sender: UIButton)
+    {
+        self.db.collection("orders").document("list").getDocument
+        { documentSnapshot, error in
+            if let e = error
+            {
+                print("There was an issue retrieving data from Firestore \(e)")
+            }
+            else
+            {
+                if let data = documentSnapshot?.data()
+                {
+                    let foobar = self.orderNum.text!.components(separatedBy: " - ")[0]
+                    let orderNum = foobar.components(separatedBy: "#")[1]
+                    var foo = data[orderNum] as! [String: Int]
+                    var pasta = foo["pasta"]!
+                    foo.updateValue(pasta+1, forKey: "pasta")
+                    if pasta+1 == 2
+                    {
+                        TTSManager.shared.play("파스타팀 서빙 완료")
+                    }
+                    documentSnapshot?.reference.updateData([orderNum: foo])
+                }
+            }
+        }
+    }
+    
+    @IBAction func drinkTeamDidTap(_ sender: UIButton)
+    {
+        self.db.collection("orders").document("list").getDocument
+        { documentSnapshot, error in
+            if let e = error
+            {
+                print("There was an issue retrieving data from Firestore \(e)")
+            }
+            else
+            {
+                if let data = documentSnapshot?.data()
+                {
+                    let foobar = self.orderNum.text!.components(separatedBy: " - ")[0]
+                    let orderNum = foobar.components(separatedBy: "#")[1]
+                    var foo = data[orderNum] as! [String: Int]
+                    var drink = foo["drink"]!
+                    foo.updateValue(drink+1, forKey: "drink")
+                    if drink+1 == 2
+                    {
+                        TTSManager.shared.play("음료팀 서빙 완료")
+                    }
+                    documentSnapshot?.reference.updateData([orderNum: foo])
+                }
+            }
+        }
+    }
+    
+    @IBAction func dessertTeamDidTap(_ sender: UIButton)
+    {
+        self.db.collection("orders").document("list").getDocument
+        { documentSnapshot, error in
+            if let e = error
+            {
+                print("There was an issue retrieving data from Firestore \(e)")
+            }
+            else
+            {
+                if let data = documentSnapshot?.data()
+                {
+                    let foobar = self.orderNum.text!.components(separatedBy: " - ")[0]
+                    let orderNum = foobar.components(separatedBy: "#")[1]
+                    var foo = data[orderNum] as! [String: Int]
+                    var dessert = foo["dessert"]!
+                    foo.updateValue(dessert+1, forKey: "dessert")
+                    if dessert+1 == 2
+                    {
+                        TTSManager.shared.play("디저트팀 서빙 완료")
+                    }
+                    documentSnapshot?.reference.updateData([orderNum: foo])
+                }
+            }
+        }
+    }
+    
+    override func prepareForReuse()
+    {
+        super.prepareForReuse()
+        self.saladTeam.setTitle("샐러드팀", for: .normal)
+        self.saladTeam.tintColor = .tintColor
+        self.saladTeam.isUserInteractionEnabled = true
+        self.pastaTeam.setTitle("파스타팀", for: .normal)
+        self.pastaTeam.tintColor = .tintColor
+        self.pastaTeam.isUserInteractionEnabled = true
+        self.dessertTeam.setTitle("디저트팀", for: .normal)
+        self.dessertTeam.tintColor = .tintColor
+        self.dessertTeam.isUserInteractionEnabled = true
+        self.drinkTeam.setTitle("음료팀", for: .normal)
+        self.drinkTeam.tintColor = .tintColor
+        self.drinkTeam.isUserInteractionEnabled = true
+        self.dbTeam.setTitle("덮밥팀", for: .normal)
+        self.dbTeam.tintColor = .tintColor
+        self.dbTeam.isUserInteractionEnabled = true
     }
 }

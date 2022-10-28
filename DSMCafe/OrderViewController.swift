@@ -80,6 +80,11 @@ class OrderViewController: UIViewController
         }
         dict["price"] = total
         dict["tableNo"] = self.tableNo
+        dict["salad"] = 0
+        dict["db"] = 0
+        dict["pasta"] = 0
+        dict["drink"] = 0
+        dict["dessert"] = 0
         let alert = UIAlertController(title: "주문", message: "주문 하시겠습니까?\(foo)\n\(total)원", preferredStyle: .alert)
         //예외처리 해야됨
         let action = UIAlertAction(title: "예", style: .default)
