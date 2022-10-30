@@ -101,7 +101,10 @@ class AdminViewController: UIViewController
                 }
                 if let d = data["completedOrders"] as? [String]
                 {
-                    K.completedOrders = d
+                    if d != K.completedOrders
+                    {
+                        K.completedOrders = d
+                    }
                 }
                 for i in K.completedOrders
                 {
@@ -109,8 +112,8 @@ class AdminViewController: UIViewController
                     let orderNum = Int(foobar.components(separatedBy: "#")[1])
                     if self.collectionView.dequeueReusableCell(withReuseIdentifier: "OrdersCollectionVC", for: IndexPath(row: self.orders.count - orderNum!, section: 0)) is OrdersCollectionViewCell
                     {
-                        print(self.orders.count - orderNum!)
                         self.collectionView.reloadItems(at: [IndexPath(row: self.orders.count - orderNum! - 2, section: 0)])
+                        TTSManager.shared.play("주문번호 \(orderNum!)번 완료")
                     }
                 }
             }
@@ -148,6 +151,7 @@ extension AdminViewController: UICollectionViewDataSource
         var txt = ""
         let key = Array(self.orders[num]!.keys)
         let val = Array(self.orders[num]!.values)
+        var dict: [String: Int] = [:]
         for i in 0..<key.count
         {
             if key[i] == "price"
@@ -235,8 +239,12 @@ extension AdminViewController: UICollectionViewDataSource
                 }
                 continue
             }
-            let k = key[i] as! String
-            txt += "\(k.components(separatedBy: "\n")[1])\t - \(val[i])\n"
+            let k = key[i]
+            dict[k.components(separatedBy: "\n")[1]] = val[i]
+        }
+        for i in Array(dict.keys).sorted()
+        {
+            txt += "\(i)\t - \(dict[i]!)\n"
         }
         cell.orderDetail.text = txt
         

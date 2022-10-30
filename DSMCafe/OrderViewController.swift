@@ -18,12 +18,14 @@ class OrderViewController: UIViewController
     
     @IBOutlet var orderButton: UIButton!
     
+    @IBOutlet var paymentInfo: UIView!
+    
     var tableNo = 0
     
-    var foodName = ["<식사류>\n어묵탕 + 치킨마요", "<식사류>\n라구파스타", "<사이드메뉴>\n어묵탕", "<사이드메뉴>\n연어샐러드/리코타샐러드", "<디저트류>\n크로플 (with 아이스크림)", "<디저트류>\n치즈케이크", "<디저트류>\n브라우니 (with 아이스크림)", "<디저트류>\n붕어빵",
-                    "<음료>\n아메리카노", "<음료>\n카페라떼", "<음료>\n아샷추", "<음료>\n레몬/자몽에이드", "<음료>\n캐모마일/페퍼민트/얼그레이 티", "<음료>\n탄산음료 2잔(사이다/콜라)", "<음료>\n탄산음료 2잔(사이다/사이다)", "<음료>\n탄산음료 2잔(콜라/콜라)", "<식사류 음료>\n콜라", "<식사류 음료>\n사이다"]
+    var foodName = ["<식사류>\n어묵탕 + 치킨마요", "<식사류>\n라구파스타", "<사이드메뉴>\n어묵탕", "<사이드메뉴>\n연어샐러드", "<사이드메뉴>\n리코타샐러드", "<디저트류>\n크로플 (with 아이스크림)", "<디저트류>\n치즈케이크", "<디저트류>\n브라우니 (with 아이스크림)", "<디저트류>\n붕어빵",
+                    "<음료>\n아메리카노", "<음료>\n카페라떼", "<음료>\n아샷추", "<음료>\n레몬에이드", "<음료>\n자몽에이드", "<음료>\n캐모마일 티", "<음료>\n페퍼민트 티", "<음료>\n얼그레이 티", "<음료>\n탄산음료 2잔(사이다/콜라)", "<음료>\n탄산음료 2잔(사이다/사이다)", "<음료>\n탄산음료 2잔(콜라/콜라)", "<식사류 음료>\n콜라", "<식사류 음료>\n사이다"]
     
-    var menuArray = ["<식사류>\n어묵탕 + 치킨마요":[10000, 0], "<식사류>\n라구파스타":[10000, 0], "<사이드메뉴>\n어묵탕":[5000,0], "<사이드메뉴>\n연어샐러드/리코타샐러드":[5000, 0], "<디저트류>\n크로플 (with 아이스크림)":[5000, 0], "<디저트류>\n치즈케이크":[5000, 0], "<디저트류>\n브라우니 (with 아이스크림)":[5000, 0], "<디저트류>\n붕어빵":[5000, 0], "<음료>\n아메리카노":[5000, 0], "<음료>\n카페라떼":[5000, 0], "<음료>\n아샷추":[5000, 0], "<음료>\n레몬/자몽에이드":[5000, 0], "<음료>\n캐모마일/페퍼민트/얼그레이 티":[5000, 0], "<음료>\n탄산음료 2잔(사이다/콜라)":[5000, 0], "<음료>\n탄산음료 2잔(사이다/사이다)":[5000, 0], "<음료>\n탄산음료 2잔(콜라/콜라)":[5000, 0], "<식사류 음료>\n콜라":[0,0], "<식사류 음료>\n사이다" : [0,0]]
+    var menuArray = ["<식사류>\n어묵탕 + 치킨마요":[10000, 0], "<식사류>\n라구파스타":[10000, 0], "<사이드메뉴>\n어묵탕":[5000,0], "<사이드메뉴>\n연어샐러드":[5000, 0], "<사이드메뉴>\n리코타샐러드":[5000, 0],"<디저트류>\n크로플 (with 아이스크림)":[5000, 0], "<디저트류>\n치즈케이크":[5000, 0], "<디저트류>\n브라우니 (with 아이스크림)":[5000, 0], "<디저트류>\n붕어빵":[5000, 0], "<음료>\n아메리카노":[5000, 0], "<음료>\n카페라떼":[5000, 0], "<음료>\n아샷추":[5000, 0], "<음료>\n레몬에이드":[5000, 0], "<음료>\n자몽에이드":[5000, 0], "<음료>\n캐모마일 티":[5000, 0], "<음료>\n페퍼민트 티":[5000, 0], "<음료>\n얼그레이 티":[5000, 0], "<음료>\n탄산음료 2잔(사이다/콜라)":[5000, 0], "<음료>\n탄산음료 2잔(사이다/사이다)":[5000, 0], "<음료>\n탄산음료 2잔(콜라/콜라)":[5000, 0], "<식사류 음료>\n콜라":[0,0], "<식사류 음료>\n사이다" : [0,0]]
     
     var orderArray = [String]()
     
@@ -38,6 +40,8 @@ class OrderViewController: UIViewController
         tableView.delegate = self
         tableView.dataSource = self
         collectionView.register(UINib(nibName: "MenuCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MenuCollectionViewCell")
+        paymentInfo.isHidden = true
+        paymentInfo.isUserInteractionEnabled = false
     }
     
     @objc func stepperChanged(_ sender: UIStepper!)
@@ -188,11 +192,20 @@ extension OrderViewController: UICollectionViewDataSource
         {
             color = .systemPurple
         }
-        cell.foodImage.image = UIImage(named: String(indexPath.row))
+        cell.foodImage.image = UIImage(named: String(indexPath.row+1))
         cell.backgroundColor = menuArray[self.foodName[indexPath.row]]![1] > 0 ? .systemOrange : color
         cell.layer.cornerRadius = 8.0
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.lightGray.cgColor
+        
+        if indexPath.row+1 == 22
+        {
+            self.paymentInfo.frame.size = cell.frame.size
+            self.paymentInfo.frame.origin = CGPoint(x: cell.frame.maxX, y: cell.frame.minY)
+            self.paymentInfo.isUserInteractionEnabled = true
+            self.paymentInfo.isHidden = false
+            self.collectionView.addSubview(self.paymentInfo)
+        }
         return cell
     }
     

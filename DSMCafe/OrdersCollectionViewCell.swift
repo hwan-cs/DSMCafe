@@ -135,7 +135,10 @@ class OrdersCollectionViewCell: UICollectionViewCell
                     foo.updateValue(drink+1, forKey: "drink")
                     if drink+1 == 2
                     {
-                        TTSManager.shared.play("음료팀 서빙 완료")
+                        DispatchQueue.main.async
+                        {
+                            TTSManager.shared.play("음료팀 서빙 완료")
+                        }
                     }
                     documentSnapshot?.reference.updateData([orderNum: foo])
                 }
