@@ -39,13 +39,7 @@ class ViewController: UIViewController
         collectionView.register(UINib(nibName: "MyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
         collectionView.dataSource = self
         collectionView.delegate = self
-        self.timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(fire), userInfo: nil, repeats: true)
         titleLabel.font = UIFont.systemFont(ofSize: 40.0)
-        titleLabel.morphingEffect = .burn
-        titleLabel.morphingDuration = 1.5
-        titleLabel.text = ""
-        titleLabel.text = "환영합니다"
-        titleLabel.start()
         
         scrollText.text = "건국대 DSM일동은 일일카페 서빙팀 및 주방팀을 응원 합니다 - 초희G: 알감자 콩감자 돼지감자, 정환G: 건덧셈 최고!, 동운G: 건덧셈 화이팅~, 동운G: 건덧셈 최고!, 동운G: 철야 끝나고 뚝섬으로 집합, 병욱G: 솔직히 좋아해"
         
@@ -105,14 +99,6 @@ class ViewController: UIViewController
             textField.placeholder = "비밀번호"
         })
         self.present(alertController, animated: true, completion: nil)
-    }
-    
-    @objc private func fire()
-    {
-        flag.toggle()
-        titleLabel.text = ""
-        titleLabel.text = flag ? "테이블을 선택해주세요" : "환영합니다"
-        titleLabel.start()
     }
 }
 

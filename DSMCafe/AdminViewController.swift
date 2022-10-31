@@ -13,7 +13,7 @@ class AdminViewController: UIViewController
 {
     @IBOutlet var collectionView: UICollectionView!
     
-    var orders : [String: [String:Int]] = [:]
+    var orders : [String: [String:AnyHashable]] = [:]
     
     var listener: ListenerRegistration?
     
@@ -40,10 +40,10 @@ class AdminViewController: UIViewController
             Task.init
             {
                 let data = try await self.db.collection("orders").document("list").getDocument().data()
-                var foobar = [String: [String:Int]]()
+                var foobar = [String: [String:AnyHashable]]()
                 if self.orders.count > 0
                 {
-                    let order = data as! [String:[String:Int]]
+                    let order = data as! [String:[String:AnyHashable]]
                     for i in order
                     {
                         if self.orders.contains(where: { key, value in
@@ -58,9 +58,9 @@ class AdminViewController: UIViewController
                         }
                     }
                 }
-                if self.orders != data as! [String: [String:Int]]
+                if self.orders != data as! [String: [String:AnyHashable]]
                 {
-                    self.orders = data as! [String: [String: Int]]
+                    self.orders = data as! [String: [String: AnyHashable]]
                 }
                 self.collectionView.reloadData()
                 self.collectionView.performBatchUpdates(nil)
@@ -151,12 +151,12 @@ extension AdminViewController: UICollectionViewDataSource
         var txt = ""
         let key = Array(self.orders[num]!.keys)
         let val = Array(self.orders[num]!.values)
-        var dict: [String: Int] = [:]
+        var dict: [String: AnyHashable] = [:]
         for i in 0..<key.count
         {
             if key[i] == "price"
             {
-                cell.price = val[i]
+                cell.price = (val[i] as! Int)
                 continue
             }
             else if key[i] == "tableNo"
@@ -166,12 +166,12 @@ extension AdminViewController: UICollectionViewDataSource
             }
             else if key[i] == "salad"
             {
-                if val[i] == 1
+                if (val[i] as! Int) == 1
                 {
                     cell.saladTeam.tintColor = .magenta
                     cell.saladTeam.setTitle("샐러드팀 서빙 중", for: .normal)
                 }
-                else if val[i] == 2
+                else if (val[i] as! Int) == 2
                 {
                     cell.saladTeam.isUserInteractionEnabled = false
                     cell.saladTeam.tintColor = .lightGray
@@ -181,12 +181,12 @@ extension AdminViewController: UICollectionViewDataSource
             }
             else if key[i] == "pasta"
             {
-                if val[i] == 1
+                if (val[i] as! Int) == 1
                 {
                     cell.pastaTeam.tintColor = .magenta
                     cell.pastaTeam.setTitle("파스타팀 서빙 중", for: .normal)
                 }
-                else if val[i] == 2
+                else if (val[i] as! Int) == 2
                 {
                     cell.pastaTeam.isUserInteractionEnabled = false
                     cell.pastaTeam.tintColor = .lightGray
@@ -196,12 +196,12 @@ extension AdminViewController: UICollectionViewDataSource
             }
             else if key[i] == "db"
             {
-                if val[i] == 1
+                if (val[i] as! Int) == 1
                 {
                     cell.dbTeam.tintColor = .magenta
                     cell.dbTeam.setTitle("덮밥팀 서빙 중", for: .normal)
                 }
-                else if val[i] == 2
+                else if (val[i] as! Int) == 2
                 {
                     cell.dbTeam.isUserInteractionEnabled = false
                     cell.dbTeam.tintColor = .lightGray
@@ -211,12 +211,12 @@ extension AdminViewController: UICollectionViewDataSource
             }
             else if key[i] == "dessert"
             {
-                if val[i] == 1
+                if (val[i] as! Int) == 1
                 {
                     cell.dessertTeam.tintColor = .magenta
                     cell.dessertTeam.setTitle("디저트팀 서빙 중", for: .normal)
                 }
-                else if val[i] == 2
+                else if (val[i] as! Int) == 2
                 {
                     cell.dessertTeam.isUserInteractionEnabled = false
                     cell.dessertTeam.tintColor = .lightGray
@@ -226,17 +226,21 @@ extension AdminViewController: UICollectionViewDataSource
             }
             else if key[i] == "drink"
             {
-                if val[i] == 1
+                if (val[i] as! Int) == 1
                 {
                     cell.drinkTeam.tintColor = .magenta
                     cell.drinkTeam.setTitle("음료팀 서빙 중", for: .normal)
                 }
-                else if val[i] == 2
+                else if (val[i] as! Int) == 2
                 {
                     cell.drinkTeam.isUserInteractionEnabled = false
                     cell.drinkTeam.tintColor = .lightGray
                     cell.drinkTeam.setTitle("서빙 완료", for: .normal)
                 }
+                continue
+            }
+            else if ["transferAmount", "transferName", "cashAmount", "ticketNum"].contains(key[i])
+            {
                 continue
             }
             let k = key[i]

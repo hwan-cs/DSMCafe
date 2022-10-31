@@ -20,6 +20,14 @@ class OrderViewController: UIViewController
     
     @IBOutlet var paymentInfo: UIView!
     
+    @IBOutlet var transferNum: UITextField!
+    
+    @IBOutlet var transferName: UITextField!
+    
+    @IBOutlet var cashAmount: UITextField!
+    
+    @IBOutlet var ticketNum: UITextField!
+    
     var tableNo = 0
     
     var foodName = ["<식사류>\n어묵탕 + 치킨마요", "<식사류>\n라구파스타", "<사이드메뉴>\n어묵탕", "<사이드메뉴>\n연어샐러드", "<사이드메뉴>\n리코타샐러드", "<디저트류>\n크로플 (with 아이스크림)", "<디저트류>\n치즈케이크", "<디저트류>\n브라우니 (with 아이스크림)", "<디저트류>\n붕어빵",
@@ -34,6 +42,7 @@ class OrderViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        K.frameHeight = self.view.frame.origin.y
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -42,6 +51,8 @@ class OrderViewController: UIViewController
         collectionView.register(UINib(nibName: "MenuCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MenuCollectionViewCell")
         paymentInfo.isHidden = true
         paymentInfo.isUserInteractionEnabled = false
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func stepperChanged(_ sender: UIStepper!)
@@ -75,7 +86,7 @@ class OrderViewController: UIViewController
         }
         var total = 0
         var foo = "\n\n"
-        var dict : [String:Int] = [:]
+        var dict : [String:AnyHashable] = [:]
         for i in 0..<self.orderArray.count
         {
             foo += "\(self.orderArray[i]) \(self.menuArray[self.orderArray[i]]![1])개\n"
@@ -89,6 +100,10 @@ class OrderViewController: UIViewController
         dict["pasta"] = 0
         dict["drink"] = 0
         dict["dessert"] = 0
+        dict["transferAmount"] = self.transferNum.text!
+        dict["transferName"] = self.transferName.text!
+        dict["cashAmount"] = self.cashAmount.text!
+        dict["ticketNum"] = self.ticketNum.text!
         let alert = UIAlertController(title: "주문", message: "주문 하시겠습니까?\(foo)\n\(total)원", preferredStyle: .alert)
         //예외처리 해야됨
         let action = UIAlertAction(title: "예", style: .default)
@@ -107,6 +122,24 @@ class OrderViewController: UIViewController
               print("Alert dismissed")
         }))
         present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification)
+    {
+
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        {
+            if K.frameHeight == self.view.frame.origin.y
+            {
+                self.view.frame.origin.y -= keyboardSize.height-90
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification)
+    {
+        print("hide")
+        self.view.frame.origin.y = 0
     }
 }
 
@@ -200,9 +233,8 @@ extension OrderViewController: UICollectionViewDataSource
         
         if indexPath.row+1 == 22
         {
-            self.paymentInfo.frame.size = cell.frame.size
-            self.paymentInfo.frame.origin = CGPoint(x: cell.frame.maxX, y: cell.frame.minY)
             self.paymentInfo.isUserInteractionEnabled = true
+            self.paymentInfo.layer.cornerRadius = 12
             self.paymentInfo.isHidden = false
             self.collectionView.addSubview(self.paymentInfo)
         }

@@ -49,8 +49,8 @@ class OrdersCollectionViewCell: UICollectionViewCell
                 {
                     let foobar = self.orderNum.text!.components(separatedBy: " - ")[0]
                     let orderNum = foobar.components(separatedBy: "#")[1]
-                    var foo = data[orderNum] as! [String: Int]
-                    var salad = foo["salad"]!
+                    var foo = data[orderNum] as! [String: AnyHashable]
+                    var salad = foo["salad"] as! Int
                     foo.updateValue(salad+1, forKey: "salad")
                     if salad+1 == 2
                     {
@@ -76,8 +76,8 @@ class OrdersCollectionViewCell: UICollectionViewCell
                 {
                     let foobar = self.orderNum.text!.components(separatedBy: " - ")[0]
                     let orderNum = foobar.components(separatedBy: "#")[1]
-                    var foo = data[orderNum] as! [String: Int]
-                    var db = foo["db"]!
+                    var foo = data[orderNum] as! [String: AnyHashable]
+                    var db = foo["db"] as! Int
                     foo.updateValue(db+1, forKey: "db")
                     if db+1 == 2
                     {
@@ -103,8 +103,8 @@ class OrdersCollectionViewCell: UICollectionViewCell
                 {
                     let foobar = self.orderNum.text!.components(separatedBy: " - ")[0]
                     let orderNum = foobar.components(separatedBy: "#")[1]
-                    var foo = data[orderNum] as! [String: Int]
-                    var pasta = foo["pasta"]!
+                    var foo = data[orderNum] as! [String: AnyHashable]
+                    var pasta = foo["pasta"] as! Int
                     foo.updateValue(pasta+1, forKey: "pasta")
                     if pasta+1 == 2
                     {
@@ -130,8 +130,8 @@ class OrdersCollectionViewCell: UICollectionViewCell
                 {
                     let foobar = self.orderNum.text!.components(separatedBy: " - ")[0]
                     let orderNum = foobar.components(separatedBy: "#")[1]
-                    var foo = data[orderNum] as! [String: Int]
-                    var drink = foo["drink"]!
+                    var foo = data[orderNum] as! [String: AnyHashable]
+                    var drink = foo["drink"] as! Int
                     foo.updateValue(drink+1, forKey: "drink")
                     if drink+1 == 2
                     {
@@ -160,8 +160,8 @@ class OrdersCollectionViewCell: UICollectionViewCell
                 {
                     let foobar = self.orderNum.text!.components(separatedBy: " - ")[0]
                     let orderNum = foobar.components(separatedBy: "#")[1]
-                    var foo = data[orderNum] as! [String: Int]
-                    var dessert = foo["dessert"]!
+                    var foo = data[orderNum] as! [String: AnyHashable]
+                    var dessert = foo["dessert"] as! Int
                     foo.updateValue(dessert+1, forKey: "dessert")
                     if dessert+1 == 2
                     {

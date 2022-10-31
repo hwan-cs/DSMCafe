@@ -11,4 +11,6 @@ target 'DSMCafe' do
   pod 'Firebase/Firestore'
   pod 'Firebase/DynamicLinks'
   pod 'FirebaseStorage'
+  pod 'IQKeyboardManagerSwift'
+
 end
