@@ -261,7 +261,7 @@ extension AdminViewController: UICollectionViewDataSource
                 flag = true
             }
         }
-        cell.contentView.backgroundColor = flag ? .systemMint : UIColor(red: 0.92, green: 0.35, blue: 0.401, alpha: 1.00)
+        cell.contentView.backgroundColor = flag ? .systemTeal : UIColor(red: 0.92, green: 0.35, blue: 0.401, alpha: 1.00)
         cell.layer.cornerRadius = 8.0
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.lightGray.cgColor
