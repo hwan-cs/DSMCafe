@@ -41,7 +41,7 @@ class ViewController: UIViewController
         collectionView.delegate = self
         titleLabel.font = UIFont.systemFont(ofSize: 40.0)
         
-        scrollText.text = "건국대 DSM일동은 일일카페 서빙팀 및 주방팀을 응원 합니다 - 초희G: 알감자 콩감자 돼지감자, 정환G: 건덧셈 최고!, 동운G: 건덧셈 화이팅~, 동운G: 건덧셈 최고!, 동운G: 철야 끝나고 뚝섬으로 집합, 병욱G: 솔직히 좋아해"
+        scrollText.text = "건국대 DSM일동은 일일카페 서빙팀 및 주방팀을 응원 합니다 - 초희G: 알감자 콩감자 돼지감자, 정환G: 건덧셈 최고!, 동운G: 건덧셈 화이팅~, 동운G: 건덧셈 최고!, 동운G: 철야 끝나고 뚝섬으로 집합, 병욱G: 솔직히 좋아해, 유빈G: 건뎃셈 사랑해여~, 유빈G: 맛있게 드시고 가세요~~, 초희G: Chochochochochocho, 초희G: 왜 내맘을 흔드는 건대~~, 정환G: zzzzzz아주 좋아요 "
         
         scrollView.showsHorizontalScrollIndicator = true
         scrollText.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +63,7 @@ class ViewController: UIViewController
     @objc func moveText()
     {
         self.scrollView.setContentOffset(CGPoint(x: self.offset, y: 0), animated: true)
-        self.offset += 10
+        self.offset += 20
         if self.offset % 30 == 0
         {
             self.scrollText.textColor = .systemPink
@@ -78,7 +78,7 @@ class ViewController: UIViewController
         }
         if CGFloat(self.offset) > scrollText.intrinsicContentSize.width - 20
         {
-            self.offset = 0
+            self.offset = -300
         }
     }
     

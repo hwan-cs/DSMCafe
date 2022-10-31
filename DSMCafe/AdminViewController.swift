@@ -71,7 +71,7 @@ class AdminViewController: UIViewController
                         textToSay += "주문번호 \(i.key)"
                         for j in i.value
                         {
-                            if j.key == "price"
+                            if ["price", "pasta", "salad", "db", "drink", "dessert", "tableNo","ticketNum", "transferAmount","transferName","cashAmount"].contains(j.key)
                             {
                                 continue
                             }
@@ -97,7 +97,7 @@ class AdminViewController: UIViewController
                 else
                 {
                     print("Document data was empty.")
-                            return
+                    return
                 }
                 if let d = data["completedOrders"] as? [String]
                 {
@@ -112,8 +112,8 @@ class AdminViewController: UIViewController
                     let orderNum = Int(foobar.components(separatedBy: "#")[1])
                     if self.collectionView.dequeueReusableCell(withReuseIdentifier: "OrdersCollectionVC", for: IndexPath(row: self.orders.count - orderNum!, section: 0)) is OrdersCollectionViewCell
                     {
-                        self.collectionView.reloadItems(at: [IndexPath(row: self.orders.count - orderNum! - 2, section: 0)])
                         TTSManager.shared.play("주문번호 \(orderNum!)번 완료")
+                        self.collectionView.reloadItems(at: [IndexPath(row: self.orders.count - orderNum! - 2, section: 0)])
                     }
                 }
             }
@@ -151,6 +151,11 @@ extension AdminViewController: UICollectionViewDataSource
         var txt = ""
         let key = Array(self.orders[num]!.keys)
         let val = Array(self.orders[num]!.values)
+        var saladFound = false
+        var dbFound = false
+        var pastaFound = false
+        var drinkFound = false
+        var dessertFound = false
         var dict: [String: AnyHashable] = [:]
         for i in 0..<key.count
         {
@@ -244,8 +249,61 @@ extension AdminViewController: UICollectionViewDataSource
                 continue
             }
             let k = key[i]
+            if k.contains("파스타")
+            {
+                pastaFound = true
+            }
+            if k.contains("디저트")
+            {
+                dessertFound = true
+            }
+            if k.contains("음료")
+            {
+                drinkFound = true
+            }
+            if k.contains("어묵탕")
+            {
+                dbFound = true
+            }
+            if k.contains("샐러드")
+            {
+                saladFound = true
+            }
             dict[k.components(separatedBy: "\n")[1]] = val[i]
         }
+        
+        if !pastaFound
+        {
+            cell.pastaTeam.isUserInteractionEnabled = false
+            cell.pastaTeam.tintColor = .lightGray
+            cell.pastaTeam.setTitle("서빙 완료", for: .normal)
+        }
+        if !dbFound
+        {
+            cell.dbTeam.isUserInteractionEnabled = false
+            cell.dbTeam.tintColor = .lightGray
+            cell.dbTeam.setTitle("서빙 완료", for: .normal)
+        }
+        if !saladFound
+        {
+            cell.saladTeam.isUserInteractionEnabled = false
+            cell.saladTeam.tintColor = .lightGray
+            cell.saladTeam.setTitle("서빙 완료", for: .normal)
+        }
+        if !drinkFound
+        {
+            cell.drinkTeam.isUserInteractionEnabled = false
+            cell.drinkTeam.tintColor = .lightGray
+            cell.drinkTeam.setTitle("서빙 완료", for: .normal)
+        }
+        if !dessertFound
+        {
+            cell.dessertTeam.isUserInteractionEnabled = false
+            cell.dessertTeam.tintColor = .lightGray
+            cell.dessertTeam.setTitle("서빙 완료", for: .normal)
+        }
+        
+        
         for i in Array(dict.keys).sorted()
         {
             txt += "\(i)\t - \(dict[i]!)\n"

@@ -42,6 +42,7 @@ class OrderViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.hideKeyboard()
         K.frameHeight = self.view.frame.origin.y
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.delegate = self
@@ -140,6 +141,20 @@ class OrderViewController: UIViewController
     {
         print("hide")
         self.view.frame.origin.y = 0
+    }
+    
+    func hideKeyboard()
+    {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard()
+    {
+        view.endEditing(true)
     }
 }
 
