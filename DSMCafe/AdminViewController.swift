@@ -113,7 +113,7 @@ class AdminViewController: UIViewController
                     if self.collectionView.dequeueReusableCell(withReuseIdentifier: "OrdersCollectionVC", for: IndexPath(row: self.orders.count - orderNum!, section: 0)) is OrdersCollectionViewCell
                     {
                         TTSManager.shared.play("주문번호 \(orderNum!)번 완료")
-                        self.collectionView.reloadItems(at: [IndexPath(row: self.orders.count - orderNum! - 2, section: 0)])
+                        self.collectionView.reloadData()
                     }
                 }
             }

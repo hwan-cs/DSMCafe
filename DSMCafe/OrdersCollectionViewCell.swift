@@ -177,19 +177,19 @@ class OrdersCollectionViewCell: UICollectionViewCell
     {
         super.prepareForReuse()
         self.saladTeam.setTitle("샐러드팀", for: .normal)
-        self.saladTeam.tintColor = .tintColor
+        self.saladTeam.tintColor = .blue
         self.saladTeam.isUserInteractionEnabled = true
         self.pastaTeam.setTitle("파스타팀", for: .normal)
-        self.pastaTeam.tintColor = .tintColor
+        self.pastaTeam.tintColor = .blue
         self.pastaTeam.isUserInteractionEnabled = true
         self.dessertTeam.setTitle("디저트팀", for: .normal)
-        self.dessertTeam.tintColor = .tintColor
+        self.dessertTeam.tintColor = .blue
         self.dessertTeam.isUserInteractionEnabled = true
         self.drinkTeam.setTitle("음료팀", for: .normal)
-        self.drinkTeam.tintColor = .tintColor
+        self.drinkTeam.tintColor = .blue
         self.drinkTeam.isUserInteractionEnabled = true
         self.dbTeam.setTitle("덮밥팀", for: .normal)
-        self.dbTeam.tintColor = .tintColor
+        self.dbTeam.tintColor = .blue
         self.dbTeam.isUserInteractionEnabled = true
     }
 }

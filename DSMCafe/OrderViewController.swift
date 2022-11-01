@@ -50,10 +50,12 @@ class OrderViewController: UIViewController
         tableView.delegate = self
         tableView.dataSource = self
         collectionView.register(UINib(nibName: "MenuCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MenuCollectionViewCell")
-        paymentInfo.isHidden = true
-        paymentInfo.isUserInteractionEnabled = false
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.paymentInfo.isUserInteractionEnabled = true
+        self.paymentInfo.layer.cornerRadius = 12
+        self.paymentInfo.isHidden = false
+        self.collectionView.addSubview(self.paymentInfo)
     }
     
     @objc func stepperChanged(_ sender: UIStepper!)
@@ -246,13 +248,6 @@ extension OrderViewController: UICollectionViewDataSource
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.lightGray.cgColor
         
-        if indexPath.row+1 == 22
-        {
-            self.paymentInfo.isUserInteractionEnabled = true
-            self.paymentInfo.layer.cornerRadius = 12
-            self.paymentInfo.isHidden = false
-            self.collectionView.addSubview(self.paymentInfo)
-        }
         return cell
     }
     
