@@ -29,7 +29,6 @@ class ViewController: UIViewController
     
     @IBOutlet var scrollTextWidth: NSLayoutConstraint!
     
-//    @IBOutlet var scrollTextWidth: NSLayoutConstraint!
     
     override func viewDidLoad()
     {

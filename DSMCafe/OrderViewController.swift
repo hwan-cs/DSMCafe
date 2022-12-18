@@ -56,6 +56,40 @@ class OrderViewController: UIViewController
         self.paymentInfo.layer.cornerRadius = 12
         self.paymentInfo.isHidden = false
         self.collectionView.addSubview(self.paymentInfo)
+        
+        var total = 0
+        var orderNum = "0001"
+        //uncomment to see total sales
+//        Task.init
+//        {
+//            if let data = try await self.db.collection("orders").document("list").getDocument().data()
+//            {
+//                for _ in 0..<data.count
+//                {
+//                    for (k, v) in self.menuArray
+//                    {
+//                        if (data[orderNum] as? [String:AnyHashable])?[k] != nil
+//                        {
+//                            self.menuArray[k]![1] += (data[orderNum]! as! [String:AnyHashable])[k]! as! Int
+//                        }
+//                    }
+//                    if ((data[orderNum]! as! [String:AnyHashable])["ticketNum"]! as! String) != ""
+//                    {
+//                        total += ((data[orderNum]! as! [String:AnyHashable])["price"]! as! Int) - Int(((data[orderNum]! as! [String:AnyHashable])["ticketNum"]! as! String))!*5000
+//                    }
+//                    else
+//                    {
+//                        total += ((data[orderNum]! as! [String:AnyHashable])["price"]! as! Int)
+//                    }
+//                    orderNum = orderNum.formatToOrderNum()
+//                }
+//            }
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now()+5)
+//        {
+//            print(total)
+//            print(self.menuArray)
+//        }
     }
     
     @objc func stepperChanged(_ sender: UIStepper!)

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import AMPopTip
+import FirebaseFirestore
 
 class MenuCollectionViewCell: UICollectionViewCell
 {
@@ -24,6 +25,7 @@ class MenuCollectionViewCell: UICollectionViewCell
     let infoPopTip = PopTip()
     
     var infoPopTipText: String?
+    
     
     override func awakeFromNib()
     {
